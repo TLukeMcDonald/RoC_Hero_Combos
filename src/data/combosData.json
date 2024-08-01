@@ -1,0 +1,5 @@
+[
+    {"heros": ["Rozen","Farah", "Sundiata"], "rank":7, "troop": "cavs"},
+    {"heros": ["Rozen","Immortal", "Farah"], "rank":43, "troop": "cavs"},
+    {"heros": ["Ava","Immortal", "Farah"], "rank":47, "troop": "cavs"}
+]

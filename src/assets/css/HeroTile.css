@@ -1,0 +1,36 @@
+
+
+
+  .combo-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #997355; 
+    border-radius: 8px;
+    width: 70px; /* Fixed width for each tile */
+    height: 90px; /* Fixed height for each tile */
+    padding: 5px; /* Padding inside each tile */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for visual effect */
+    background-size: contain; /* Ensure the image is contained within the tile */
+    background-repeat: no-repeat; /* Prevent background image repetition */
+    background-position: center; /* Center the background image */
+    margin: 5px; /* Margin between tiles */
+  }
+  
+  .hero-image {
+    width: 65px; /* Width of image container */
+    height: 65px; /* Height of image container */
+    background-color: #fff; /* Default background color if no image */
+    background-size: cover; /* Ensure the image covers the container */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    border-radius: 8px; /* Rounded corners */
+  }
+  
+  .hero-text {
+    font-size: 12px; /* Font size for hero name */
+    color: #ffffff; /* Text color */
+    text-align: center; /* Center text within the div */
+    margin-top: 5px; /* Space between image and name */
+  }

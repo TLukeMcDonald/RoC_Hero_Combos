@@ -1,0 +1,51 @@
+
+.filtered-combos {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items horizontally */
+    padding: 20px;
+  }
+  
+  .completed-combos-title {
+    font-size: 24px; /* Larger font size for title */
+    margin-bottom: 20px; /* Space below the title */
+  }
+  
+  .combo-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Center align items horizontally */
+    margin-bottom: 5px; /* Space between each combo group */
+    width: 100%; /* Full width to contain both the info and tiles */
+    max-width: 800px; /* Optional: limit the width of the container */
+    justify-content: center;
+    gap: 10px; /* Space between tiles */
+  }
+  
+  .combo-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px; /* Same width as the hero tiles */
+    height: 90px; /* Same height as the hero tiles */
+    background: #f0f0f0; /* Background color for the info box */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for visual effect */
+    padding: 5px; /* Padding inside the info box */
+    text-align: center; /* Center text inside the box */
+    margin-bottom: 10px; /* Space below the info box */
+  }
+  
+  .combo-rank, .combo-troop {
+    font-size: 12px; /* Font size for text */
+    margin: 5px 0; /* Space between lines of text */
+  }
+  
+  .hero-tiles-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between tiles */
+    width: 100%; /* Full width to contain all hero tiles */
+  }
+  
