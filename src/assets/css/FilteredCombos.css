@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center; /* Center align items horizontally */
-  padding: 20px;
 }
 
-.completed-combos-title {
+.filtered-combos-title {
   font-size: 24px; /* Larger font size for title */
-  margin-bottom: 20px; /* Space below the title */
+  margin-top: 30px; /* Space above the title */
+  margin-bottom: 10px; /* Space below the title */
+  font-weight: bold;
 }
 
 .combo-wrapper {
@@ -42,4 +43,5 @@
   flex-wrap: wrap;
   gap: 10px; /* Space between tiles */
   width: 100%; /* Full width to contain all hero tiles */
+  justify-content: center;
 }

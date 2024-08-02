@@ -13,6 +13,7 @@
     background-repeat: no-repeat; /* Prevent background image repetition */
     background-position: center; /* Center the background image */
     margin: 5px; /* Margin between tiles */
+    text-align: center;
   }
   
   .hero-image {
@@ -30,4 +31,25 @@
     color: #ffffff; /* Text color */
     text-align: center; /* Center text within the div */
     margin-top: 5px; /* Space between image and name */
+  }
+  
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between buttons and text */
+    margin-top: 5px; /* Space between hero name and controls */
+  }
+  
+  .quantity-button {
+    background: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0 8px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .quantity-text {
+    font-size: 14px;
+    color: #fff;
   }

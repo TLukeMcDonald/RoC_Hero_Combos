@@ -12,10 +12,12 @@ const FilteredCombos = ({ combos }) => {
             <div className="combo-text">Rank: {combo.rank}</div>
             <div className="combo-text">Troop: {combo.troop}</div>
           </div>
+          <div className="hero-tiles-wrapper">
             {combo.heros.map(heroName => (
               <HeroTile key={heroName} heroName={heroName} />
             ))}
           </div>
+        </div>
       ))}
     </div>
   );

@@ -1,24 +1,24 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import HerosList from './components/HerosList';
 import FilteredCombos from './components/FilteredCombos';
 import { filterCompletedCombos, filterPartialCombos } from './utils/helperFunctions';
-import combosData from './data/combosData.json';
-import myHeros from './data/myHeros.js';
-import herosData from './data/herosData.js';
+import combosData from './data/combosData'; // Import combosData
 import './assets/css/App.css';
 
 const App = () => {
-  // Filtered completed and partial combos
-  const completedCombos = filterCompletedCombos(combosData, myHeros, herosData);
+  const myHeros = useSelector((state) => state.myHeros);
+
+  const completedCombos = filterCompletedCombos(combosData, myHeros);
   const partialCombos = filterPartialCombos(combosData, myHeros);
 
   return (
     <div className="App">
       <HerosList />
       <div className="filtered-combos-container">
-        <h1 className="completed-combos-title">Completed Combos</h1>
+        <div className="filtered-combos-title">Completed Combos</div>
         <FilteredCombos combos={completedCombos} />
-        <h1 className="completed-combos-title">Partial Combos</h1>
+        <div className="filtered-combos-title">Partial Combos</div>
         <FilteredCombos combos={partialCombos} />
       </div>
     </div>

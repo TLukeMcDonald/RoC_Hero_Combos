@@ -1,0 +1,17 @@
+.hero-tiles-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items horizontally */
+    padding: 20px;
+  }
+  
+  .hero-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center items within the row */
+    margin-bottom: 20px; /* Space between rows */
+  }
+  
+  .hero-row .combo-tile {
+    margin: 5px; /* Space between tiles */
+  }
