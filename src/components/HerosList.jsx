@@ -6,7 +6,7 @@ const HerosList = () => {
     <div>
       <h1>My Hero's List</h1>
       <ul>
-      {Object.values(herosData).map(hero => (
+        {Object.values(herosData).map(hero => (
           <li key={hero.name}>
             {hero.name}, {hero.type}
           </li>

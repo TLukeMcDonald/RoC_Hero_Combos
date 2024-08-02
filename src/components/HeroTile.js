@@ -1,53 +1,35 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import '../assets/css/HeroTile.css'; // Path for CSS file
-import myHeros from './../data/myHeros';
+import myHeros from '../data/myHeros.js'; // Ensure the correct path to myHeros
+import './../assets/css/HeroTile.css';
 
-const HeroTile = ({ heroes, heroData }) => {
-
+const HeroTile = ({ heroName }) => {
+  // Function to get the image URL for the hero
   const getHeroImage = (heroName) => {
     try {
-        // Attempt to load the image
-        return require(`../assets/images/${heroName}.jpg`);
+      // Attempt to load the image
+      return require(`../assets/images/${heroName}.jpg`); // Adjust for Webpack compatibility
     } catch (e) {
-        // Fallback to a blank image
-        return '';
+      // Fallback to empty string for background color in CSS
+      return '';
     }
   };
 
-
+  const heroImage = getHeroImage(heroName);
+  const heroDisplayName = `${heroName} (${myHeros[heroName] || 0})`;
 
   return (
-    <>
-      {heroes.map(heroName => {
-        const heroImage = getHeroImage(heroName);
-        const hero = heroData[heroName];
-        const copiesHave = myHeros[heroName] || 0;
-        const heroDisplayName = `${heroName} (${copiesHave})`;
+    <div className="combo-tile">
 
-        return (
-          <div key={heroName} className="combo-tile">
-            <div
-              className="hero-image"
-              style={{ backgroundImage: heroImage ? `url(${heroImage})` : 'none' }}
-            />
-            <div className="hero-text">{heroDisplayName}</div>
-          </div>
-        );
-      })}
-    </>
+    <div
+        className="hero-image"
+        style={{ backgroundImage: heroImage ? `url(${heroImage})` : 'none' }}
+    />
+
+      <div className="combo-text">{heroDisplayName}</div>
+
+    </div>
+    
   );
-};
-
-HeroTile.propTypes = {
-  heroes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  heroData: PropTypes.objectOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      copiesHave: PropTypes.number.isRequired,
-      copiesNeed: PropTypes.number.isRequired
-    })
-  ).isRequired,
 };
 
 export default HeroTile;
