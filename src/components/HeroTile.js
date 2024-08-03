@@ -18,9 +18,11 @@ const HeroTile = ({ heroName }) => {
   };
 
   const heroImage = getHeroImage(heroName);
+
   const copiesHave = myHeros[heroName] || 0;
   const heroData = herosData[heroName] || {};
-  const copiesNeeded = heroData.copiesNeed || 0;
+  const copiesNeeded = heroData.copiesNeed || 4;
+  const heroDisplayName = `${heroName} (${copiesHave > copiesNeeded ? `${copiesNeeded}+` : copiesHave})`;
 
   return (
     <div className="combo-tile">
@@ -28,10 +30,7 @@ const HeroTile = ({ heroName }) => {
         className="hero-image"
         style={{ backgroundImage: heroImage ? `url(${heroImage})` : 'none' }}
       />
-      <div className="combo-text">{heroName}</div>
-      <div className="combo-text">
-        {copiesHave > copiesNeeded ? `${copiesNeeded}+` : copiesHave}
-      </div>
+      <div className="combo-text">{heroDisplayName}</div>
     </div>
   );
 };

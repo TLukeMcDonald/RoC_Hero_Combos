@@ -53,3 +53,28 @@
     font-size: 14px;
     color: #fff;
   }
+
+
+button {
+  background-color: #94999e; /* Primary button color */
+  color: white; /* Text color */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 14px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth background color transition */
+  margin: 0 5px; /* Space between buttons and between button and text */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker color on hover */
+}
+
+button:focus {
+  outline: none; /* Remove default focus outline */
+}
+
+button:disabled {
+  background-color: #c0c0c0; /* Disabled button color */
+  cursor: not-allowed; /* Show not-allowed cursor */
+}

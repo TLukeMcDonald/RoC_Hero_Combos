@@ -42,6 +42,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px; /* Space between tiles */
-  width: 100%; /* Full width to contain all hero tiles */
+
   justify-content: center;
 }
