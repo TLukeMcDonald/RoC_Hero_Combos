@@ -1,18 +1,17 @@
 {
   "files": {
-    "main.css": "/RoC_Hero_Combos/static/css/main.efb47f90.css",
-    "main.js": "/RoC_Hero_Combos/static/js/main.11a5d63b.js",
-    "static/js/453.3bd96969.chunk.js": "/RoC_Hero_Combos/static/js/453.3bd96969.chunk.js",
+    "main.css": "/RoC_Hero_Combos/static/css/main.08a6333e.css",
+    "main.js": "/RoC_Hero_Combos/static/js/main.7f62b20a.js",
     "static/media/Sundiata.jpg": "/RoC_Hero_Combos/static/media/Sundiata.4c11d78a04cf87e1f873.jpg",
-    "static/media/Farah.jpg": "/RoC_Hero_Combos/static/media/Farah.a8fd2e1280ecfe0d4893.jpg",
+    "static/media/Caesar.jpg": "/RoC_Hero_Combos/static/media/Caesar.336293a74db9606684a9.jpg",
+    "static/media/Farah.jpg": "/RoC_Hero_Combos/static/media/Farah.48aaead5289ad2da7341.jpg",
     "static/media/Rozen.jpg": "/RoC_Hero_Combos/static/media/Rozen.d66f45ef3f1e723237af.jpg",
     "index.html": "/RoC_Hero_Combos/index.html",
-    "main.efb47f90.css.map": "/RoC_Hero_Combos/static/css/main.efb47f90.css.map",
-    "main.11a5d63b.js.map": "/RoC_Hero_Combos/static/js/main.11a5d63b.js.map",
-    "453.3bd96969.chunk.js.map": "/RoC_Hero_Combos/static/js/453.3bd96969.chunk.js.map"
+    "main.08a6333e.css.map": "/RoC_Hero_Combos/static/css/main.08a6333e.css.map",
+    "main.7f62b20a.js.map": "/RoC_Hero_Combos/static/js/main.7f62b20a.js.map"
   },
   "entrypoints": [
-    "static/css/main.efb47f90.css",
-    "static/js/main.11a5d63b.js"
+    "static/css/main.08a6333e.css",
+    "static/js/main.7f62b20a.js"
   ]
 }
