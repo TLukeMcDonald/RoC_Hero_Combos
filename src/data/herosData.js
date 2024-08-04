@@ -62,6 +62,7 @@ const herosData = {
  [HEROES.JOHN]: {"name": HEROES.JOHN, "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N" },
  [HEROES.KING_CNUT]: {"name": HEROES.KING_CNUT, "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N" },
  [HEROES.KUBLAI]: {"name": HEROES.KUBLAI, "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N" },
+ [HEROES.LANCELOT]: { "name": "Lancelot", "type": TROOPTYPE.C, "copiesNeed": 34, "paid": "Y"},
  [HEROES.LAWMAN]: {"name": HEROES.LAWMAN, "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N" },
  [HEROES.LEONIDAS]: {"name": HEROES.LEONIDAS, "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N" },
  [HEROES.LIBERATOR]: {"name": HEROES.LIBERATOR, "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N" },

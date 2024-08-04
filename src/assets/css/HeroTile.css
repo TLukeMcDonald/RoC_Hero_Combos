@@ -23,7 +23,8 @@
     background-size: cover; /* Ensure the image covers the container */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Prevent image repetition */
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 4px; /* Rounded corners */
+    border: solid 1px whitesmoke;
   }
   
   .combo-text {

@@ -1,11 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addHero, removeHero } from '../redux/myHerosSlice'; // Ensure this path is correct
+import { addHero, removeHero } from '../redux/myHerosSlice';
+import HeroImage from './HeroImage'; // Import the HeroImage component
+import herosData from '../data/herosData.js';
 import './../assets/css/HeroTile.css';
 
 const SelectionTile = ({ heroName }) => {
   const dispatch = useDispatch();
   const copiesHave = useSelector((state) => state.myHeros[heroName] || 0);
+  const heroData = herosData[heroName] || {};
+  const copiesNeeded = heroData.copiesNeed || 4;
 
   const handleAdd = () => {
     dispatch(addHero({ heroName }));
@@ -15,30 +19,16 @@ const SelectionTile = ({ heroName }) => {
     dispatch(removeHero({ heroName }));
   };
 
-  const heroImage = getHeroImage(heroName);
-
   return (
     <div className="combo-tile">
-      <div
-        className="hero-image"
-        style={{ backgroundImage: heroImage ? `url(${heroImage})` : 'none' }}
-      />
-      <div className="combo-text">{heroName}</div>
+      <HeroImage heroName={heroName} />
       <div className="combo-text">
-        <button onClick={handleRemove}>-</button>
-        {copiesHave}
-        <button onClick={handleAdd}>+</button>
+        <button onClick={handleRemove} className="counter-button">-</button>
+        {copiesHave > copiesNeeded ? `${copiesNeeded}+` : copiesHave}
+        <button onClick={handleAdd} className="counter-button">+</button>
       </div>
     </div>
   );
-};
-
-const getHeroImage = (heroName) => {
-  try {
-    return require(`../assets/images/${heroName}.jpg`);
-  } catch (e) {
-    return '';
-  }
 };
 
 export default SelectionTile;

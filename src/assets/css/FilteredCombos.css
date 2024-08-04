@@ -41,7 +41,5 @@
 .hero-tiles-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* Space between tiles */
-
   justify-content: center;
 }

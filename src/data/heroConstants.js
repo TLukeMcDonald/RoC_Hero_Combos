@@ -59,6 +59,7 @@ export const HEROES = {
   JOHN: "John",
   KING_CNUT: "King Cnut",
   KUBLAI: "Kublai",
+  LANCELOT: "Lancelot",
   LAWMAN: "Lawman",
   LEONIDAS: "Leonidas",
   LIBERATOR: "Liberator",

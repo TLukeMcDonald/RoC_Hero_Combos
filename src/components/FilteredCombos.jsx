@@ -9,7 +9,12 @@ const FilteredCombos = ({ combos }) => {
       {combos.map((combo, index) => (
         <div key={index} className="combo-wrapper">
           <div className="combo-tile">
-            <div className="combo-text">Rank: {combo.rank}</div>
+            {combo.freeRank && (
+              <div className="combo-text">Free Rank: {combo.freeRank}</div>
+            )}
+            {combo.rank && (
+              <div className="combo-text">Paid Rank: {combo.rank}</div>
+            )}
             <div className="combo-text">Troop: {combo.troop}</div>
           </div>
           <div className="hero-tiles-wrapper">
