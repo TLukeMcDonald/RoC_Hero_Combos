@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroTile from './HeroTile';
+import HeroTile from './HeroTile'; // Ensure this imports HeroTile correctly
 import './../assets/css/FilteredCombos.css';
 import './../assets/css/HeroTile.css';
 
@@ -18,8 +18,8 @@ const FilteredCombos = ({ combos }) => {
             <div className="combo-text">Troop: {combo.troop}</div>
           </div>
           <div className="hero-tiles-wrapper">
-            {combo.heros.map(heroName => (
-              <HeroTile key={heroName} heroName={heroName} />
+            {combo.heros.map(heroKey => (
+              <HeroTile key={heroKey} heroName={heroKey} />
             ))}
           </div>
         </div>
