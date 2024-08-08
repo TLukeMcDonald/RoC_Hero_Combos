@@ -6,20 +6,20 @@ const myHerosSlice = createSlice({
   initialState: initialHeros,
   reducers: {
     addHero(state, action) {
-      const { heroName } = action.payload;
-      if (state[heroName]) {
-        state[heroName] += 1;
+      const { heroKey } = action.payload;
+      if (state[heroKey]) {
+        state[heroKey] += 1;
       } else {
-        state[heroName] = 1;
+        state[heroKey] = 1;
       }
     },
     removeHero(state, action) {
-      const { heroName } = action.payload;
-      if (state[heroName]) {
-        if (state[heroName] > 1) {
-          state[heroName] -= 1;
+      const { heroKey } = action.payload;
+      if (state[heroKey]) {
+        if (state[heroKey] > 1) {
+          state[heroKey] -= 1;
         } else {
-          delete state[heroName];
+          delete state[heroKey];
         }
       }
     },

@@ -10,14 +10,13 @@ const SelectionTile = ({ heroKey }) => {
   const copiesHave = useSelector((state) => state.myHeros[heroKey] || 0);
   const heroData = herosData[heroKey] || {};
   const copiesNeeded = heroData.copiesNeed || 4;
-  const heroName = heroData.name || heroKey; // Fallback to the key if the name is missing
 
   const handleAdd = () => {
-    dispatch(addHero({ heroKey: heroKey }));
+    dispatch(addHero({ heroKey }));
   };
 
   const handleRemove = () => {
-    dispatch(removeHero({ heroKey: heroKey }));
+    dispatch(removeHero({ heroKey }));
   };
 
   return (
