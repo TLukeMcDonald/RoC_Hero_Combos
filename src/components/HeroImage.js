@@ -1,32 +1,39 @@
 import React from 'react';
-import './../assets/css/HeroImage.css'; // Create a separate CSS file for this component
+import './../assets/css/HeroImage.css'; // Assuming the CSS is located here
+import herosData from '../data/herosData.js'; // Import herosData to access the pictureLink
 
-const HeroImage = ({ heroName }) => {
-  // Function to get the image URL for the hero
-  const getHeroImage = (heroName) => {
+const HeroImage = ({ heroKey }) => {
+  const heroData = herosData[heroKey] || {}; // Fallback to an empty object if heroKey is not found
+
+  // Function to get the image URL using the pictureLink
+  const getHeroImage = (pictureLink) => {
     try {
       // Attempt to load the image
-      return require(`../assets/images/${heroName}.jpg`);
+      return require(`../assets/images/${pictureLink}`);
     } catch (e) {
       // Fallback to empty string for background color in CSS
       return '';
     }
   };
 
-  const heroImage = getHeroImage(heroName);
+  const heroImage = getHeroImage(heroData.pictureLink);
+  const heroName = heroData.name || heroKey; // Default to heroKey if name is not available
 
   return (
     <div className="hero-image-container">
-      {heroImage ? (
-        <div
-          className="hero-image"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        />
-      ) : (
-        <div className="hero-image-fallback">
+      <div
+        className={`hero-image ${!heroImage ? 'hero-image-fallback' : ''}`}
+        style={{ backgroundImage: heroImage ? `url(${heroImage})` : 'none' }}
+      >
+        {!heroImage && (
+          <div className="fallback-text">
+            {heroName}
+          </div>
+        )}
+        <div className="hero-hover-text">
           {heroName}
         </div>
-      )}
+      </div>
     </div>
   );
 };

@@ -5,23 +5,24 @@ import HeroImage from './HeroImage'; // Import the HeroImage component
 import herosData from '../data/herosData.js';
 import './../assets/css/HeroTile.css';
 
-const SelectionTile = ({ heroName }) => {
+const SelectionTile = ({ heroKey }) => {
   const dispatch = useDispatch();
-  const copiesHave = useSelector((state) => state.myHeros[heroName] || 0);
-  const heroData = herosData[heroName] || {};
+  const copiesHave = useSelector((state) => state.myHeros[heroKey] || 0);
+  const heroData = herosData[heroKey] || {};
   const copiesNeeded = heroData.copiesNeed || 4;
+  const heroName = heroData.name || heroKey; // Fallback to the key if the name is missing
 
   const handleAdd = () => {
-    dispatch(addHero({ heroName }));
+    dispatch(addHero({ heroKey: heroKey }));
   };
 
   const handleRemove = () => {
-    dispatch(removeHero({ heroName }));
+    dispatch(removeHero({ heroKey: heroKey }));
   };
 
   return (
     <div className="combo-tile">
-      <HeroImage heroName={heroName} />
+      <HeroImage heroKey={heroKey} />
       <div className="combo-text">
         <button onClick={handleRemove} className="counter-button">-</button>
         {copiesHave > copiesNeeded ? `${copiesNeeded}+` : copiesHave}

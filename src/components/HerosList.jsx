@@ -7,15 +7,16 @@ import './../assets/css/HeroTile.css';
 const HerosList = () => {
   const myHeros = useSelector((state) => state.myHeros);
 
-  // Sort heroes by whether or not they are in myHeros, but maintain stable order within each group
-  const ownedHeros = [];
-  const notOwnedHeros = [];
+  // Initialize empty objects to store owned and not owned heroes
+  const ownedHeros = {};
+  const notOwnedHeros = {};
 
-  Object.values(herosData).forEach(hero => {
-    if (myHeros[hero.name]) {
-      ownedHeros.push(hero);
+  // Iterate over herosData keys and classify heroes into owned and not owned objects
+  Object.keys(herosData).forEach(heroKey => {
+    if (myHeros[heroKey]) {
+      ownedHeros[heroKey] = herosData[heroKey];
     } else {
-      notOwnedHeros.push(hero);
+      notOwnedHeros[heroKey] = herosData[heroKey];
     }
   });
 
@@ -23,13 +24,13 @@ const HerosList = () => {
     <div>
       <h1>My Hero's List</h1>
       <div className="hero-tiles-wrapper">
-        {ownedHeros.map(hero => (
-          <SelectionTile key={hero.name} heroName={hero.name} />
+        {Object.keys(ownedHeros).map(heroKey => (
+          <SelectionTile key={heroKey} heroKey={heroKey} />
         ))}
       </div>
       <div className="hero-tiles-wrapper">
-        {notOwnedHeros.map(hero => (
-          <SelectionTile key={hero.name} heroName={hero.name} />
+        {Object.keys(notOwnedHeros).map(heroKey => (
+          <SelectionTile key={heroKey} heroKey={heroKey} />
         ))}
       </div>
     </div>

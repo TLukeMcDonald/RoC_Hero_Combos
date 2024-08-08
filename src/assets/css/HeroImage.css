@@ -1,30 +1,54 @@
 .hero-image-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 65px;
-    height: 65px;
-    border-radius: 8px;
-    background-color: #fff;
-  }
-  
-  .hero-image {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .hero-image-fallback {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    color: #333;
-    background-color: #e0e0e0;
-    border-radius: 8px;
-    text-align: center;
-  
-  }
+  position: relative;
+  width: 65px; /* Adjust size as needed */
+  height: 65px;
+}
+
+.hero-image, .hero-image-fallback {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  border: solid 1px whitesmoke;
+  display: flex;
+  align-items: center; /* Align the text in the center */
+  justify-content: center;
+  position: relative;
+}
+
+.hero-image-fallback {
+  background-color: #fff;
+  color: #333;
+  font-size: 12px;
+  text-align: center;
+}
+
+.fallback-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #333; /* Text color when image is not found */
+  font-size: 12px;
+  text-align: center;
+}
+
+.hero-hover-text {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 10px;
+  text-align: center;
+  padding: 2px 0;
+  width: 100%;
+  display: none; /* Hidden by default */
+  position: absolute;
+  bottom: 0;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.hero-image-container:hover .hero-hover-text {
+  display: block; /* Show on hover */
+}

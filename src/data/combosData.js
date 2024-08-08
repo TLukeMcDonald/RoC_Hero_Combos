@@ -2,14 +2,14 @@ import { HEROES } from './heroConstants';
 import { TROOPTYPE } from './typeConstants';
 
 const combosData = [
-  { heros: [HEROES.ROLAND, HEROES.LOUIS, HEROES.AVALANCHE], rank: '', freeRank: 1, troop: TROOPTYPE.C, hasPaid: 'N' },,
+  { heros: [HEROES.ROLAND, HEROES.LOUIS, HEROES.AVALANCHE], rank: '', freeRank: 1, troop: TROOPTYPE.C, hasPaid: 'N' },
   { heros: [HEROES.SAKURA, HEROES.WARDEN, HEROES.HENRYII], freeRank: 1, troop: TROOPTYPE.A, hasPaid: 'N' },
   { heros: [HEROES.HERALDIII, HEROES.GUSTAV, HEROES.HEALER], freeRank: 1, troop: TROOPTYPE.F, hasPaid: 'N' },
   { heros: [HEROES.HERALDIII, HEROES.WARHAMMER, HEROES.HEALER], freeRank: 1, troop: TROOPTYPE.M, hasPaid: 'N' },
   { heros: [HEROES.HENRYII, HEROES.ESELFRED, HEROES.SAKURA], freeRank: 1, troop: TROOPTYPE.P, hasPaid: 'N' },
   
   { heros: [HEROES.ROZEN, HEROES.FARAH, HEROES.SUNDIATA], rank: 7, freeRank: 2, troop: TROOPTYPE.C, hasPaid: 'N' },
-  { heros: [HEROES.Defender, HEROES.WARDEN, HEROES.HENRY], freeRank: 2, troop: TROOPTYPE.A, hasPaid: 'N' },
+  { heros: [HEROES.Defender, HEROES.WARDEN, HEROES.HENRYV], freeRank: 2, troop: TROOPTYPE.A, hasPaid: 'N' },
   { heros: [HEROES.HERALDIII, HEROES.STEED, HEROES.HEALER], freeRank: 2, troop: TROOPTYPE.F, hasPaid: 'N' },
   { heros: [HEROES.HERALDIII, HEROES.STEED, HEROES.Warhammer], freeRank: 2, troop: TROOPTYPE.M, hasPaid: 'N' },
   { heros: [HEROES.HENRYII, HEROES.SAKURA, HEROES.HEALER], freeRank: 2, troop: TROOPTYPE.P, hasPaid: 'N' },
