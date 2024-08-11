@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroTile from './HeroTile'; // Ensure this imports HeroTile correctly
+import HeroTile from './HeroTile';
 import './../assets/css/FilteredCombos.css';
 import './../assets/css/HeroTile.css';
 

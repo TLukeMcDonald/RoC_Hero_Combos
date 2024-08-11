@@ -3,7 +3,10 @@ import initialHeros from '../data/myHeros.js'; // Import initial state
 
 const myHerosSlice = createSlice({
   name: 'myHeros',
-  initialState: initialHeros,
+  initialState: {
+    ...initialHeros,
+    favorites: {} // Add a separate key for favorites
+  },
   reducers: {
     addHero(state, action) {
       const { heroKey } = action.payload;
@@ -23,8 +26,16 @@ const myHerosSlice = createSlice({
         }
       }
     },
+    toggleFavorite(state, action) {
+      const { heroKey } = action.payload;
+      if (state.favorites[heroKey]) {
+        delete state.favorites[heroKey];
+      } else {
+        state.favorites[heroKey] = true;
+      }
+    },
   },
 });
 
-export const { addHero, removeHero } = myHerosSlice.actions;
+export const { addHero, removeHero, toggleFavorite } = myHerosSlice.actions;
 export default myHerosSlice.reducer;

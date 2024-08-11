@@ -1,36 +1,60 @@
 import React from 'react';
-import SelectionTile from './SelectionTile';
 import { useSelector } from 'react-redux';
+import SelectionTile from './SelectionTile';
 import herosData from '../data/herosData.js';
 import './../assets/css/HeroTile.css';
 
 const HerosList = () => {
   const myHeros = useSelector((state) => state.myHeros);
+  const favoriteKeys = Object.keys(myHeros.favorites || {});
 
-  // Initialize empty objects to store owned and not owned heroes
+  // Combine all owned heroes and favorites into one object
   const ownedHeros = {};
-  const notOwnedHeros = {};
+  favoriteKeys.forEach(heroKey => {
+    ownedHeros[heroKey] = herosData[heroKey];
+  });
 
-  // Iterate over herosData keys and classify heroes into owned and not owned objects
   Object.keys(herosData).forEach(heroKey => {
     if (myHeros[heroKey]) {
       ownedHeros[heroKey] = herosData[heroKey];
-    } else {
-      notOwnedHeros[heroKey] = herosData[heroKey];
     }
   });
+
+  // Separate the owned heroes into favorite and non-favorite arrays
+  const favoriteHeros = favoriteKeys.map(key => ({
+    key,
+    ...herosData[key],
+  })).filter(hero => hero.key in ownedHeros);
+
+  const nonFavoriteHeros = Object.keys(ownedHeros)
+    .filter(key => !favoriteKeys.includes(key))
+    .map(key => ({
+      key,
+      ...herosData[key],
+    }));
+
+  const notOwnedHeros = Object.keys(herosData)
+    .filter(key => !myHeros[key] && !favoriteKeys.includes(key))
+    .map(key => ({
+      key,
+      ...herosData[key],
+    }));
 
   return (
     <div>
       <h1>My Hero's List</h1>
       <div className="hero-tiles-wrapper">
-        {Object.keys(ownedHeros).map(heroKey => (
-          <SelectionTile key={heroKey} heroKey={heroKey} />
+        {favoriteHeros.map(hero => (
+          <SelectionTile key={hero.key} heroKey={hero.key} />
+        ))}
+        {nonFavoriteHeros.map(hero => (
+          <SelectionTile key={hero.key} heroKey={hero.key} />
         ))}
       </div>
+      <h2>Not Owned Heroes</h2>
       <div className="hero-tiles-wrapper">
-        {Object.keys(notOwnedHeros).map(heroKey => (
-          <SelectionTile key={heroKey} heroKey={heroKey} />
+        {notOwnedHeros.map(hero => (
+          <SelectionTile key={hero.key} heroKey={hero.key} />
         ))}
       </div>
     </div>
