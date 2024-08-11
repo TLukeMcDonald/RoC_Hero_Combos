@@ -19,7 +19,7 @@ const FilteredCombos = ({ combos }) => {
           </div>
           <div className="hero-tiles-wrapper">
             {combo.heros.map((heroKey, heroIndex) => (
-              <HeroTile key={`hero-${heroKey}-${heroIndex}`} heroName={heroKey} />
+              <HeroTile key={`hero-${heroKey}-${heroIndex}`} heroKey={heroKey} showButtons={false} />
             ))}
           </div>
         </div>

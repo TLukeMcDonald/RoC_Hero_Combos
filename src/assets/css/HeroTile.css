@@ -46,7 +46,7 @@
   justify-content: center; /* Center align the content */
   font-size: 14px; /* Font size for the number */
   font-weight: bold;
-  margin-top: 1px;
+  margin-top: 3px;
 }
 
 .hero-copy-display span {
