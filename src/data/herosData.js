@@ -4,7 +4,7 @@ import { TROOPTYPE } from './typeConstants';
 const herosData = {
     [HEROES.ALEXANDER]: {"name": "Alexander", "type": TROOPTYPE.F, "copiesNeed": 34, "paid": "Y", pictureLink: "ALEXANDER.jpg" },
     [HEROES.ALFAITH]: {"name": "AlFaith", "type": TROOPTYPE.A, "copiesNeed": 4, "paid": "N", pictureLink: "ALFAITH.jpg" },
-    [HEROES.ALFRED]: {"name": "Alfred", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "ALFRED.jpg" },
+    [HEROES.ALFRED]: {"name": "Alfred", "type": TROOPTYPE.C, "copiesNeed":34, "paid": "Y", pictureLink: "ALFRED.jpg" },
     [HEROES.ARMY_BREAKER]: {"name": "Army Breaker", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "ArmyBreaker.jpg" },
     [HEROES.ARSLAN]: {"name": "Arslan", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "ARSLAN.jpg" },
     [HEROES.ARTHUR]: {"name": "Arthur", "type": TROOPTYPE.C, "copiesNeed":34, "paid": "Y", pictureLink: "ARTHUR.jpg" },

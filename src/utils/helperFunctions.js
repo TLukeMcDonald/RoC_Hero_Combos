@@ -15,3 +15,17 @@ export const filterPartialCombos = (combosData, myHeros) => {
     combo.heros.some(heroKey => myHeros[heroKey])
   );
 };
+
+
+// Other helpers
+export const getTextColorClass = (copiesHave, copiesNeeded) => {
+  if (copiesNeeded === 0) return 'zero'; // Handle division by zero
+
+  const percentage = copiesHave / copiesNeeded;
+
+  return percentage < 0.25 ? 'zero' :
+    percentage < 0.50 ? 'quarter' :
+    percentage < 0.75 ? 'half' :
+    percentage < 1.00 ? 'threeQuarters' :
+    'full';
+};
