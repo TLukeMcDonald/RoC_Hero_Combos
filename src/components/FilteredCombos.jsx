@@ -7,7 +7,7 @@ const FilteredCombos = ({ combos }) => {
   return (
     <div className="filtered-combos">
       {combos.map((combo, index) => (
-        <div key={index} className="combo-wrapper">
+        <div key={`combo-${index}`} className="combo-wrapper">
           <div className="combo-tile">
             {combo.freeRank && (
               <div className="combo-text">Free Rank: {combo.freeRank}</div>
@@ -18,8 +18,8 @@ const FilteredCombos = ({ combos }) => {
             <div className="combo-text">Troop: {combo.troop}</div>
           </div>
           <div className="hero-tiles-wrapper">
-            {combo.heros.map(heroKey => (
-              <HeroTile key={heroKey} heroName={heroKey} />
+            {combo.heros.map((heroKey, heroIndex) => (
+              <HeroTile key={`hero-${heroKey}-${heroIndex}`} heroName={heroKey} />
             ))}
           </div>
         </div>
