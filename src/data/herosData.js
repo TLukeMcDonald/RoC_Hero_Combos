@@ -23,7 +23,7 @@ const herosData = {
     [HEROES.CHARLES]: {"name": "Charles", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "CHARLES.jpg" },
     [HEROES.CHENLIU]: {"name": "Chenliu", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "CHENLIU.jpg" },
     [HEROES.CICERO]: {"name": "Cicero", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "CICERO.jpg" },
-    [HEROES.CID]: {"name": "Cid", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "CID.jpg" },
+    [HEROES.CID]: {"name": "El Cid", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "CID.jpg" },
     [HEROES.CLEO]: {"name": "Cleo", "type": TROOPTYPE.C, "copiesNeed":34, "paid": "Y", pictureLink: "CLEO.jpg" },
     [HEROES.CLOVIS]: {"name": "Clovis", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "CLOVIS.jpg" },
     [HEROES.CONSTANTINE]: {"name": "Constantine", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "CONSTANTINE.jpg" },
@@ -89,7 +89,7 @@ const herosData = {
     [HEROES.SCARLET_REAVER]: {"name": "Scarlet Reaver", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "SCARLET_REAVER.jpg" },
     [HEROES.SKANDA]: {"name": "Skanda", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "SKANDA.jpg" },
     [HEROES.SKYBREAKER]: {"name": "Skybreaker", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "SKYBREAKER.jpg" },
-    [HEROES.SOARING]: {"name": "Soaring", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "SOARING.jpg" },
+    [HEROES.SOARING]: {"name": "Soaring Hawk", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "SOARING.jpg" },
     [HEROES.SPECTRAL_REAPER]: {"name": "Spectral Reaper", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "SPECTRAL_REAPER.jpg" },
     [HEROES.STEED]: {"name": "Steed", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "STEED.jpg" },
     [HEROES.SUNDIATA]: {"name": "Sundiata", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "SUNDIATA.jpg" },
@@ -102,7 +102,7 @@ const herosData = {
     [HEROES.WILLIAM_CONQUEROR]: {"name": "William Conqueror", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "WILLIAM_CONQUEROR.jpg" },
     [HEROES.WILLIAM_WALLACE]: {"name": "William Wallace", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "WILLIAM_WALLACE.jpg" },
     [HEROES.WINDWALKER]: {"name": "Windwalker", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "WINDWALKER.jpg" },
-    [HEROES.WITCH]: {"name": "Witch", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "WITCH.jpg" },
+    [HEROES.WITCH]: {"name": "Witch Hunter", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "WITCH.jpg" },
     [HEROES.YUKIMURA]: {"name": "Yukimura", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "YUKIMURA.jpg" },
         
 

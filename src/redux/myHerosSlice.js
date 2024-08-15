@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import initialHeros from '../data/myHeros.js'; // Import initial state
+import initialHeros from '../data/myHeros.js'; // Import initial hero state
+import initialFavorites from '../data/myFavorites.js'; // Import initial favorites state
 
 const myHerosSlice = createSlice({
   name: 'myHeros',
   initialState: {
     ...initialHeros,
-    favorites: {} // Add a separate key for favorites
+    favorites: { ...initialFavorites } // Load initial state for favorites
   },
   reducers: {
     addHero(state, action) {
