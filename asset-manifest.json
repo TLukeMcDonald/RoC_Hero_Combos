@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/RoC_Hero_Combos/static/css/main.0a6a706d.css",
-    "main.js": "/RoC_Hero_Combos/static/js/main.e745a37a.js",
+    "main.js": "/RoC_Hero_Combos/static/js/main.44167d8c.js",
     "static/media/BELISARIUS.jpg": "/RoC_Hero_Combos/static/media/BELISARIUS.ecd442ab23aed84db03f.jpg",
     "static/media/DEFENDER.jpg": "/RoC_Hero_Combos/static/media/DEFENDER.705f2d427b583dacaf28.jpg",
     "static/media/CHARLES.jpg": "/RoC_Hero_Combos/static/media/CHARLES.b54129c647ee3a11c6cf.jpg",
@@ -15,6 +15,7 @@
     "static/media/Valkyrie.jpg": "/RoC_Hero_Combos/static/media/Valkyrie.6521bf0e9d148abd5ffa.jpg",
     "static/media/Roku.jpg": "/RoC_Hero_Combos/static/media/Roku.f36f46e169aba075adff.jpg",
     "static/media/ Cid.jpg": "/RoC_Hero_Combos/static/media/ Cid.610366e97a5e3174c07f.jpg",
+    "static/media/SCARLET_REAVER.jpg": "/RoC_Hero_Combos/static/media/SCARLET_REAVER.c3d2373d31b65d199fca.jpg",
     "static/media/ScarletReaver.jpg": "/RoC_Hero_Combos/static/media/ScarletReaver.c3d2373d31b65d199fca.jpg",
     "static/media/Rainforest.jpg": "/RoC_Hero_Combos/static/media/Rainforest.b0cd40beea5fe574731e.jpg",
     "static/media/HENRYV.jpg": "/RoC_Hero_Combos/static/media/HENRYV.99af7f13327ad34cc750.jpg",
@@ -101,10 +102,10 @@
     "static/media/LANCELOT.jpg": "/RoC_Hero_Combos/static/media/LANCELOT.6b26b71de2e3b781d47f.jpg",
     "index.html": "/RoC_Hero_Combos/index.html",
     "main.0a6a706d.css.map": "/RoC_Hero_Combos/static/css/main.0a6a706d.css.map",
-    "main.e745a37a.js.map": "/RoC_Hero_Combos/static/js/main.e745a37a.js.map"
+    "main.44167d8c.js.map": "/RoC_Hero_Combos/static/js/main.44167d8c.js.map"
   },
   "entrypoints": [
     "static/css/main.0a6a706d.css",
-    "static/js/main.e745a37a.js"
+    "static/js/main.44167d8c.js"
   ]
 }
