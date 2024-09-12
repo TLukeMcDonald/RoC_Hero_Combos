@@ -81,7 +81,7 @@ const herosData = {
     [HEROES.RAGNAR]: {"name": "Ragnar", "type": TROOPTYPE.C, "copiesNeed":34, "paid": "Y", pictureLink: "RAGNAR.jpg" },
     [HEROES.RAINFOREST]: {"name": "Rainforest", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "RAINFOREST.jpg" },
     [HEROES.RAMSES]: {"name": "Ramses", "type": TROOPTYPE.C, "copiesNeed":34, "paid": "Y", pictureLink: "RAMSES.jpg" },
-    [HEROES.ROKU]: {"name": "Roku", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "ROKU.jpg" },
+    [HEROES.ROKU]: {"name": "Roku Boshuten", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "ROKU.jpg" },
     [HEROES.ROLAND]: {"name": "Roland", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "ROLAND.jpg" },
     [HEROES.ROUGH]: {"name": "Rough", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "ROUGH.jpg" },
     [HEROES.ROZEN]: {"name": "Rozen", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "ROZEN.jpg" },

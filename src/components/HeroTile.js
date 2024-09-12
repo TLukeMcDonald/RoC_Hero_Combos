@@ -11,10 +11,11 @@ import './../assets/css/HeroTile.css';
 
 const HeroTile = ({ heroKey, showButtons = false }) => {
   const dispatch = useDispatch();
-  const copiesHave = useSelector((state) => state.myHeros[heroKey] || 0);
+  const selectedCastle = useSelector((state) => state.myHeros.currentCastle);
+  const copiesHave = useSelector((state) => state.myHeros.castles[selectedCastle].myHeros[heroKey] || 0);
   const heroData = herosData[heroKey] || {};
   const copiesNeeded = heroData.copiesNeed || 4;
-  const isFavorite = useSelector((state) => state.myHeros.favorites[heroKey]);
+  const isFavorite = useSelector((state) => state.myHeros.castles[selectedCastle].favorites[heroKey]);
 
   const textColorClass = getTextColorClass(copiesHave, copiesNeeded);
   const heroCopyDisplay = `${copiesHave > copiesNeeded ? `${copiesNeeded}+` : copiesHave}`;

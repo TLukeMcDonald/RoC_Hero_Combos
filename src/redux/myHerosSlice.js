@@ -1,42 +1,52 @@
 import { createSlice } from '@reduxjs/toolkit';
-import initialHeros from '../data/myHeros.js'; // Import initial hero state
-import initialFavorites from '../data/myFavorites.js'; // Import initial favorites state
+import initialHeros from '../data/myHeros.js';
+
+
+const initialState = {
+  castles: {
+    ...initialHeros
+  },
+  currentCastle: 'Eardstapa'
+};
 
 const myHerosSlice = createSlice({
   name: 'myHeros',
-  initialState: {
-    ...initialHeros,
-    favorites: { ...initialFavorites } // Load initial state for favorites
-  },
+  initialState,
   reducers: {
     addHero(state, action) {
       const { heroKey } = action.payload;
-      if (state[heroKey]) {
-        state[heroKey] += 1;
+      const currentSet = state.castles[state.currentCastle];
+      if (currentSet.myHeros[heroKey]) {
+        currentSet.myHeros[heroKey] += 1;
       } else {
-        state[heroKey] = 1;
+        currentSet.myHeros[heroKey] = 1;
       }
     },
     removeHero(state, action) {
       const { heroKey } = action.payload;
-      if (state[heroKey]) {
-        if (state[heroKey] > 1) {
-          state[heroKey] -= 1;
+      const currentSet = state.castles[state.currentCastle];
+      if (currentSet.myHeros[heroKey]) {
+        if (currentSet.myHeros[heroKey] > 1) {
+          currentSet.myHeros[heroKey] -= 1;
         } else {
-          delete state[heroKey];
+          delete currentSet.myHeros[heroKey];
         }
       }
     },
     toggleFavorite(state, action) {
       const { heroKey } = action.payload;
-      if (state.favorites[heroKey]) {
-        delete state.favorites[heroKey];
+      const currentSet = state.castles[state.currentCastle];
+      if (currentSet.favorites[heroKey]) {
+        delete currentSet.favorites[heroKey];
       } else {
-        state.favorites[heroKey] = true;
+        currentSet.favorites[heroKey] = true;
       }
+    },
+    setCastle(state, action) {
+      state.currentCastle = action.payload;
     },
   },
 });
 
-export const { addHero, removeHero, toggleFavorite } = myHerosSlice.actions;
+export const { addHero, removeHero, toggleFavorite, setCastle } = myHerosSlice.actions;
 export default myHerosSlice.reducer;

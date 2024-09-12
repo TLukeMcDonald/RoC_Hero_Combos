@@ -5,10 +5,13 @@ import herosData from '../data/herosData.js';
 import './../assets/css/HeroTile.css';
 
 const HerosList = () => {
-  const myHeros = useSelector((state) => state.myHeros);
-  const favoriteKeys = Object.keys(myHeros.favorites || {});
-
+  const currentCastle = useSelector((state) => state.myHeros.currentCastle);
+  const myHeros = useSelector((state) => state.myHeros.castles[currentCastle].myHeros);
+  const favorites = useSelector((state) => state.myHeros.castles[currentCastle].favorites);
+  
+  const favoriteKeys = Object.keys(favorites || {});
   const ownedHeros = {};
+
   favoriteKeys.forEach(heroKey => {
     ownedHeros[heroKey] = herosData[heroKey];
   });
@@ -40,7 +43,7 @@ const HerosList = () => {
 
   return (
     <div>
-      <h1>My Hero's List</h1>
+      <h1>{currentCastle} Heroes List</h1>
       <div className="hero-tiles-wrapper">
         {favoriteHeros.map(hero => (
           <HeroTile key={hero.key} heroKey={hero.key} showButtons={true} />
