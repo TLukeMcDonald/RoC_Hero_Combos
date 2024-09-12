@@ -2,6 +2,7 @@ import { HEROES } from './heroConstants';
 import { TROOPTYPE } from './typeConstants';
 
 const herosData = {
+    [HEROES.NOPICTURE]: {"name": "NoPicture Name", "type": TROOPTYPE.C, "copiesNeed": 4, "paid": "N", pictureLink: "bad.jpg" },
     [HEROES.ALEXANDER]: {"name": "Alexander", "type": TROOPTYPE.F, "copiesNeed": 34, "paid": "Y", pictureLink: "ALEXANDER.jpg" },
     [HEROES.ALFAITH]: {"name": "AlFaith", "type": TROOPTYPE.A, "copiesNeed": 4, "paid": "N", pictureLink: "ALFAITH.jpg" },
     [HEROES.ALFRED]: {"name": "Alfred", "type": TROOPTYPE.C, "copiesNeed":34, "paid": "Y", pictureLink: "ALFRED.jpg" },
