@@ -14,22 +14,32 @@ const App = () => {
   // Fetch initial hero data when the component mounts
   useEffect(() => {
     dispatch(fetchInitialData());
-  }, [dispatch]); // Empty dependency array ensures this runs once on mount
+  }, [dispatch]);
+
+  const isLoaded = useSelector((state) => state.myHeros.isLoaded);
+  const error = useSelector((state) => state.myHeros.error); // Get the error state
 
   const myHeros = useSelector((state) => {
     const currentCastle = state.myHeros.currentCastle;
     return state.myHeros.castles[currentCastle]?.myHeros || {};
   });
 
-  const isLoading = Object.keys(myHeros).length === 0;
+  const favorites = useSelector((state) => {
+    const currentCastle = state.myHeros.currentCastle;
+    return state.myHeros.castles[currentCastle]?.favorites || {};
+  });
 
-  // Use useMemo to optimize the filtering of combos
-  const completedCombos = useMemo(() => filterCompletedCombos(combosData, myHeros), [myHeros]);
+  const completedCombos = useMemo(() => filterCompletedCombos(combosData, myHeros, favorites), [myHeros, favorites]);
   const partialCombos = useMemo(() => filterPartialCombos(combosData, myHeros), [myHeros]);
 
+  // If there's an error, display it
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   // If loading, show a loading state
-  if (isLoading) {
-    return <div>Loading...</div>; // Show a loading state or a message if myHeros is not available
+  if (!isLoaded) {
+    return <div>Loading...</div>;
   }
 
   return (
@@ -37,7 +47,7 @@ const App = () => {
       <CastleHeader />
       <HerosList />
       <div className="filtered-combos-container">
-        <div className="filtered-combos-title">Completed Combos</div>
+        <div className="filtered-combos-title">Completed or Favorite Combos</div>
         <FilteredCombos combos={completedCombos} />
         <div className="filtered-combos-title">Partial Combos</div>
         <FilteredCombos combos={partialCombos} />
@@ -47,4 +57,3 @@ const App = () => {
 };
 
 export default App;
-

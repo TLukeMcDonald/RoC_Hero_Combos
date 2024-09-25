@@ -9,6 +9,11 @@ const HerosList = () => {
   const myHeros = useSelector((state) => state.myHeros?.castles[currentCastle]?.myHeros) || {};
   const favorites = useSelector((state) => state.myHeros?.castles[currentCastle]?.favorites) || {};
 
+
+  const hasHeros = Object.keys(myHeros).length > 0; 
+
+
+
   const favoriteKeys = Object.keys(favorites);
   const ownedHeros = {};
 
@@ -29,7 +34,7 @@ const HerosList = () => {
     ...herosData[key],
   })).filter(hero => hero.key in ownedHeros);
 
-  const nonFavoriteHeros = Object.keys(ownedHeros)
+  const OwnedNonFavoriteHeros = Object.keys(ownedHeros)
     .filter(key => !favoriteKeys.includes(key))
     .map(key => ({
       key,
@@ -50,7 +55,7 @@ const HerosList = () => {
         {favoriteHeros.map(hero => (
           <HeroTile key={hero.key} heroKey={hero.key} showButtons={true} />
         ))}
-        {nonFavoriteHeros.map(hero => (
+        {OwnedNonFavoriteHeros.map(hero => (
           <HeroTile key={hero.key} heroKey={hero.key} showButtons={true} />
         ))}
       </div>

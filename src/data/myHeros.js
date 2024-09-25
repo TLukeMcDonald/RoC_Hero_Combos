@@ -10,7 +10,7 @@ const initialHeros = {
       [HEROES.ALFAITH]:4,
       [HEROES.BLACKPRINCE]:4,
       [HEROES.BRAVE]:4,
-      [HEROES.ARMY_BREAKER]:4,
+      [HEROES.ARMY]:4,
       [HEROES.AVALANCHE]:4,
       [HEROES.BEASTQUEEN]:4,
       [HEROES.CAOCAO]:4,
@@ -36,10 +36,10 @@ const initialHeros = {
       [HEROES.ROKU]:2,
       [HEROES.ROUGH]:1,
       [HEROES.SAKURA]:1,
-      [HEROES.SCARLET_REAVER]: 3,
-      [HEROES.SPECTRAL_REAPER]:1,
+      [HEROES.SCARLET]: 3,
+      [HEROES.SPECTRAL]:1,
       [HEROES.SKANDA]:1,
-      [HEROES.SKYBREAKER]:1,
+      [HEROES.SKY]:1,
       [HEROES.STEED]:3,
       [HEROES.TARANTULA]:2,
       [HEROES.THEODORA]:1,
@@ -55,7 +55,7 @@ const initialHeros = {
     favorites: {
       [HEROES.HEALER]:true,
       [HEROES.ARSLAN]:true,
-      [HEROES.SCARLET_REAVER]:true,
+      [HEROES.SCARLET]:true,
       [HEROES.IMMORTAL]:true,
       [HEROES.FARAH]:true,
     }
@@ -73,7 +73,7 @@ const initialHeros = {
     favorites: {
       [HEROES.HEALER]:true,
       [HEROES.ARSLAN]:true,
-      [HEROES.SCARLET_REAVER]:true,
+      [HEROES.SCARLET]:true,
       [HEROES.IMMORTAL]:true,
       [HEROES.FARAH]:true,
     }
@@ -91,7 +91,7 @@ const initialHeros = {
     favorites: {
       [HEROES.HEALER]:true,
       [HEROES.ARSLAN]:true,
-      [HEROES.SCARLET_REAVER]:true,
+      [HEROES.SCARLET]:true,
       [HEROES.IMMORTAL]:true,
       [HEROES.FARAH]:true,
     }
@@ -109,7 +109,7 @@ const initialHeros = {
     favorites: {
       [HEROES.HEALER]:true,
       [HEROES.ARSLAN]:true,
-      [HEROES.SCARLET_REAVER]:true,
+      [HEROES.SCARLET]:true,
       [HEROES.IMMORTAL]:true,
       [HEROES.FARAH]:true,
     }
@@ -117,3 +117,8 @@ const initialHeros = {
 };
 
 export default initialHeros;
+
+
+
+
+

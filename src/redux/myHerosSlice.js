@@ -2,11 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import { db } from '../firebaseConfig'; // Import your Firebase config
 import { collection, getDocs, setDoc, doc } from 'firebase/firestore'; // Firestore functions
 
-// Initial state can be empty or based on your requirement
 const initialState = {
   castles: {},
-  currentCastle: 'Eardstapa',
+  currentCastle: '',
+  isLoaded: false,
+  error: null, // Add error state
 };
+
 
 const myHerosSlice = createSlice({
   name: 'myHeros',
@@ -67,25 +69,48 @@ const myHerosSlice = createSlice({
       setDoc(doc(db, 'castles', state.currentCastle), currentSet);
     },
     setInitialData(state, action) {
-      state.castles = action.payload; // Set the castles data from Firestore
+      state.castles = action.payload.castles; // Set castles data
+      state.currentCastle = action.payload.firstCastle; // Set the first castle as currentCastle
     },
+    setLoaded(state, action) {
+      state.isLoaded = action.payload; // Set loading state
+    },
+    setError(state, action) {
+      state.error = action.payload; // Set the error message
+    }
   },
 });
 
 // Async function to fetch initial data from Firestore
-export const fetchInitialData = () => async (dispatch) => {
+export const fetchInitialData = () => async (dispatch, getState) => {
+  dispatch(myHerosSlice.actions.setLoaded(false));
+
   try {
-    const querySnapshot = await getDocs(collection(db, 'castles')); // Fetch all castles
+    const querySnapshot = await getDocs(collection(db, 'castles'));
     const castlesData = {};
+    
+    // Initialize firstCastle based on current state
+    let firstCastle = getState().myHeros.currentCastle || ''; 
 
     querySnapshot.forEach((doc) => {
-      castlesData[doc.id] = doc.data(); // Store data in castlesData
+      castlesData[doc.id] = doc.data();
+
+      // If firstCastle is empty, set the first castle from the query
+      if (!firstCastle) {
+        firstCastle = doc.id;
+      }
     });
-    dispatch(myHerosSlice.actions.setInitialData(castlesData)); // Dispatch the action to set castles
+
+    dispatch(myHerosSlice.actions.setInitialData({ castles: castlesData, firstCastle }));
   } catch (error) {
     console.error("Error fetching data from Firestore:", error);
+    dispatch(myHerosSlice.actions.setError(error.message)); // Set the error state
+  } finally {
+    dispatch(myHerosSlice.actions.setLoaded(true));
   }
 };
 
-export const { addHero, removeHero, toggleFavorite, setCastle, setInitialData } = myHerosSlice.actions;
+
+
+export const { addHero, removeHero, toggleFavorite, setCastle, setInitialData, setLoaded } = myHerosSlice.actions;
 export default myHerosSlice.reducer;

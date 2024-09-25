@@ -1,11 +1,14 @@
 import herosData from '../data/herosData'; 
 
 // Filtering functions
-export const filterCompletedCombos = (combosData, myHeros) => {
+export const filterCompletedCombos = (combosData, myHeros, favorites) => {
   return combosData.filter(combo =>
     combo.heros.every(heroKey => {
       const hero = myHeros[heroKey];
-      return hero && hero >= herosData[heroKey].copiesNeed;
+      const isFavorite = favorites[heroKey];
+      
+      // Consider the hero completed if they are either in favorites or have enough copies
+      return isFavorite || (hero && hero >= herosData[heroKey].copiesNeed);
     })
   );
 };
