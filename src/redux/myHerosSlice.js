@@ -74,7 +74,6 @@ const myHerosSlice = createSlice({
 
 // Async function to fetch initial data from Firestore
 export const fetchInitialData = () => async (dispatch) => {
-  console.log("Fetch API data");
   try {
     const querySnapshot = await getDocs(collection(db, 'castles')); // Fetch all castles
     const castlesData = {};
@@ -82,7 +81,6 @@ export const fetchInitialData = () => async (dispatch) => {
     querySnapshot.forEach((doc) => {
       castlesData[doc.id] = doc.data(); // Store data in castlesData
     });
-console.log(castlesData);
     dispatch(myHerosSlice.actions.setInitialData(castlesData)); // Dispatch the action to set castles
   } catch (error) {
     console.error("Error fetching data from Firestore:", error);
