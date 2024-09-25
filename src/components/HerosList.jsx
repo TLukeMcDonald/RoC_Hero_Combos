@@ -6,12 +6,13 @@ import './../assets/css/HeroTile.css';
 
 const HerosList = () => {
   const currentCastle = useSelector((state) => state.myHeros.currentCastle);
-  const myHeros = useSelector((state) => state.myHeros.castles[currentCastle].myHeros);
-  const favorites = useSelector((state) => state.myHeros.castles[currentCastle].favorites);
-  
-  const favoriteKeys = Object.keys(favorites || {});
+  const myHeros = useSelector((state) => state.myHeros?.castles[currentCastle]?.myHeros) || {};
+  const favorites = useSelector((state) => state.myHeros?.castles[currentCastle]?.favorites) || {};
+
+  const favoriteKeys = Object.keys(favorites);
   const ownedHeros = {};
 
+  // Populate ownedHeros with favorites and owned heroes
   favoriteKeys.forEach(heroKey => {
     ownedHeros[heroKey] = herosData[heroKey];
   });
@@ -22,6 +23,7 @@ const HerosList = () => {
     }
   });
 
+  // Filter heroes into favorites and non-favorites
   const favoriteHeros = favoriteKeys.map(key => ({
     key,
     ...herosData[key],

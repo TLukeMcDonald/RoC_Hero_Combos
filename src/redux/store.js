@@ -5,6 +5,8 @@ const store = configureStore({
   reducer: {
     myHeros: myHerosReducer,
   },
+  middleware: (getDefaultMiddleware) => 
+    getDefaultMiddleware({ serializableCheck: false }), // If you're storing non-serializable values
 });
 
 export default store;

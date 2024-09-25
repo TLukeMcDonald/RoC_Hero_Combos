@@ -1,17 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import store from './redux/store';
-import './assets/css/index.css';
+import store from './redux/store'; // Adjust this to your store path
+import App from './App';
+import { fetchInitialData } from './redux/myHerosSlice';
 
-const container = document.getElementById('root');
-const root = ReactDOM.createRoot(container); 
+// Dispatch the fetch action when the store is initialized
+store.dispatch(fetchInitialData());
 
-root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
 );

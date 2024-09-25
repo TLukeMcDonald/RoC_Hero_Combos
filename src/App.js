@@ -1,21 +1,36 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useMemo } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import HerosList from './components/HerosList';
 import FilteredCombos from './components/FilteredCombos';
 import { filterCompletedCombos, filterPartialCombos } from './utils/helperFunctions';
-import combosData from './data/combosData'; 
+import { fetchInitialData } from './redux/myHerosSlice'; // Import the thunk for fetching data
 import CastleHeader from './components/CastleHeader';
+import combosData from './data/combosData'; 
 import './assets/css/App.css';
 
 const App = () => {
-  const myHeros = useSelector((state) => {
-  const  currentCastle = state.myHeros.currentCastle;
-  console.log(state.myHeros.castles[currentCastle].myHeros)
-  return  state.myHeros.castles[currentCastle].myHeros}
-  );
+  const dispatch = useDispatch();
 
-  const completedCombos = filterCompletedCombos(combosData, myHeros);
-  const partialCombos = filterPartialCombos(combosData, myHeros);
+  // Fetch initial hero data when the component mounts
+  useEffect(() => {
+    dispatch(fetchInitialData());
+  }, [dispatch]); // Empty dependency array ensures this runs once on mount
+
+  const myHeros = useSelector((state) => {
+    const currentCastle = state.myHeros.currentCastle;
+    return state.myHeros.castles[currentCastle]?.myHeros || {};
+  });
+
+  const isLoading = Object.keys(myHeros).length === 0;
+
+  // Use useMemo to optimize the filtering of combos
+  const completedCombos = useMemo(() => filterCompletedCombos(combosData, myHeros), [myHeros]);
+  const partialCombos = useMemo(() => filterPartialCombos(combosData, myHeros), [myHeros]);
+
+  // If loading, show a loading state
+  if (isLoading) {
+    return <div>Loading...</div>; // Show a loading state or a message if myHeros is not available
+  }
 
   return (
     <div className="App">
@@ -32,3 +47,4 @@ const App = () => {
 };
 
 export default App;
+
