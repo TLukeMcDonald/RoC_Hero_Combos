@@ -1,5 +1,15 @@
 https://tlukemcdonald.github.io/RoC_Hero_Combos/
 
+To run application you must 1st create a .env file and add your firebase settings.
+
+REACT_APP_API_KEY= "YOUR_API_KEY"
+REACT_APP_AUTH_DOMAIN=YOUR_PROJECT_ID.firebaseapp.com
+REACT_APP_PROJECT_ID=YOUR_PROJECT_ID
+REACT_APP_STORAGE_BUCKET=YOUR_PROJECT_ID.appspot.com
+REACT_APP_MESSAGING_SENDER_ID=YOUR_MESSAGING_SENDER_ID
+REACT_APP_APP_ID=YOUR_APP_ID
+REACT_APP_MEASUREMENT_ID=YOUR_MEASUREMENT_ID
+
 
 ## Available Scripts
 
