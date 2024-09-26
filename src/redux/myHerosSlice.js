@@ -132,5 +132,5 @@ export const fetchInitialData = () => async (dispatch) => {
 };
 
 
-export const { addHero, removeHero, toggleFavorite, setCastle, addCastle , setInitialData, setLoaded } = myHerosSlice.actions;
+export const { addHero, removeHero, toggleFavorite, setCastle, addCastle, setInitialData, setLoaded } = myHerosSlice.actions;
 export default myHerosSlice.reducer;

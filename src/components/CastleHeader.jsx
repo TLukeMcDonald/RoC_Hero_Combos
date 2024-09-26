@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCastle } from '../redux/myHerosSlice'; // Import the action
-import { addCastle } from '../redux/myHerosSlice'; // Import the addCastle action
+import { setCastle, addCastle } from '../redux/myHerosSlice'; // Import the actions
+import { saveCastleToDatabase } from '../firebaseService'; // Import the function to save to the database
+import { auth } from '../firebaseConfig'; // Import the Firebase auth instance
 
 const CastleHeader = () => {
   const dispatch = useDispatch();
@@ -15,8 +16,21 @@ const CastleHeader = () => {
   const handleAddCastle = async () => {
     const castleName = prompt("Enter the name of your new castle:");
     if (castleName) {
-      // Dispatch action to add the new castle
-      dispatch(addCastle(castleName));
+      const userId = auth.currentUser ? auth.currentUser.uid : null; // Get the UID of the current user
+
+      if (userId) { // Ensure user is logged in
+        // Dispatch action to add the new castle
+        dispatch(addCastle(castleName));
+
+        // Save the new castle to the database
+        try {
+          await saveCastleToDatabase(userId, castleName); // Pass the userId and castleName
+        } catch (error) {
+          console.error("Error saving castle to the database:", error);
+        }
+      } else {
+        alert("You must be logged in to add a new castle.");
+      }
     }
   };
 
