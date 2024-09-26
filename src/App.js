@@ -1,23 +1,28 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import HerosList from './components/HerosList';
 import FilteredCombos from './components/FilteredCombos';
 import { filterCompletedCombos, filterPartialCombos } from './utils/helperFunctions';
-import { fetchInitialData } from './redux/myHerosSlice'; // Import the thunk for fetching data
+import { fetchInitialData } from './redux/myHerosSlice';
 import CastleHeader from './components/CastleHeader';
 import combosData from './data/combosData'; 
 import './assets/css/App.css';
+import { auth, googleProvider } from './firebaseConfig'; // Import Firebase auth and provider
+import { signInWithPopup, signOut } from 'firebase/auth';
 
 const App = () => {
   const dispatch = useDispatch();
+  const [user, setUser] = useState(null);
 
   // Fetch initial hero data when the component mounts
   useEffect(() => {
-    dispatch(fetchInitialData());
-  }, [dispatch]);
+    if (user) {
+      dispatch(fetchInitialData());
+    }
+  }, [dispatch, user]);
 
   const isLoaded = useSelector((state) => state.myHeros.isLoaded);
-  const error = useSelector((state) => state.myHeros.error); // Get the error state
+  const error = useSelector((state) => state.myHeros.error);
 
   const myHeros = useSelector((state) => {
     const currentCastle = state.myHeros.currentCastle;
@@ -32,18 +37,48 @@ const App = () => {
   const completedCombos = useMemo(() => filterCompletedCombos(combosData, myHeros, favorites), [myHeros, favorites]);
   const partialCombos = useMemo(() => filterPartialCombos(combosData, myHeros), [myHeros]);
 
+  // Handle Google sign-in
+  const handleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      setUser(result.user);
+    } catch (error) {
+      console.error("Error during sign-in:", error);
+    }
+  };
+
+  // Handle sign-out
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      setUser(null);
+    } catch (error) {
+      console.error("Error during sign-out:", error);
+    }
+  };
+
   // If there's an error, display it
   if (error) {
     return <div>Error: {error}</div>;
   }
 
-  // If loading, show a loading state
+  // If loading or user isn't authenticated, show login or loading state
+  if (!user) {
+    return (
+      <div className="login-screen">
+        <h1>Please Sign In</h1>
+        <button onClick={handleLogin}>Sign in with Google</button>
+      </div>
+    );
+  }
+
   if (!isLoaded) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className="App">
+      <button onClick={handleLogout}>Sign Out</button>
       <CastleHeader />
       <HerosList />
       <div className="filtered-combos-container">

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { db } from '../firebaseConfig'; // Import your Firebase config
+import { db, auth } from '../firebaseConfig'; // Import your Firebase config
 import { collection, getDocs, setDoc, doc } from 'firebase/firestore'; // Firestore functions
 
 const initialState = {
@@ -82,20 +82,25 @@ const myHerosSlice = createSlice({
 });
 
 // Async function to fetch initial data from Firestore
-export const fetchInitialData = () => async (dispatch, getState) => {
-  dispatch(myHerosSlice.actions.setLoaded(false));
+export const fetchInitialData = () => async (dispatch) => {
+  const user = auth.currentUser; // Get the authenticated user
+  if (!user) {
+    console.error("No user is logged in.");
+    return;
+  }
+
+  const userUID = user.uid; // Fetch the UID of the logged-in user
+
+  dispatch(myHerosSlice.actions.setLoaded(false)); // Set loading to false before fetching
 
   try {
-    const querySnapshot = await getDocs(collection(db, 'castles'));
+    const castlesRef = collection(db, 'users', userUID, 'castles'); // Reference to user's castles
+    const querySnapshot = await getDocs(castlesRef);
     const castlesData = {};
-    
-    // Initialize firstCastle based on current state
-    let firstCastle = getState().myHeros.currentCastle || ''; 
+    let firstCastle = '';
 
     querySnapshot.forEach((doc) => {
       castlesData[doc.id] = doc.data();
-
-      // If firstCastle is empty, set the first castle from the query
       if (!firstCastle) {
         firstCastle = doc.id;
       }
@@ -103,10 +108,9 @@ export const fetchInitialData = () => async (dispatch, getState) => {
 
     dispatch(myHerosSlice.actions.setInitialData({ castles: castlesData, firstCastle }));
   } catch (error) {
-    console.error("Error fetching data from Firestore:", error);
-    dispatch(myHerosSlice.actions.setError(error.message)); // Set the error state
+    console.error("Error fetching castles:", error);
   } finally {
-    dispatch(myHerosSlice.actions.setLoaded(true));
+    dispatch(myHerosSlice.actions.setLoaded(true)); // Set loading to true after fetching
   }
 };
 
