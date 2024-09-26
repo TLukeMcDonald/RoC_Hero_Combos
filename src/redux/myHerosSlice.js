@@ -1,14 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { db, auth } from '../firebaseConfig'; // Import your Firebase config
-import { collection, getDocs, setDoc, doc } from 'firebase/firestore'; // Firestore functions
+import { db, auth } from '../firebaseConfig'; 
+import { collection, getDocs, setDoc, doc } from 'firebase/firestore';
 
 const initialState = {
   castles: {},
   currentCastle: '',
   isLoaded: false,
-  error: null, // Add error state
+  error: null,
 };
-
 
 const myHerosSlice = createSlice({
   name: 'myHeros',
@@ -21,20 +20,12 @@ const myHerosSlice = createSlice({
       const { heroKey } = action.payload;
       const currentSet = state.castles[state.currentCastle];
 
-      // Ensure myHeros exists
       if (!currentSet.myHeros) {
         currentSet.myHeros = {};
       }
 
-      // Update hero count
-      if (currentSet.myHeros[heroKey]) {
-        currentSet.myHeros[heroKey] += 1;
-      } else {
-        currentSet.myHeros[heroKey] = 1;
-      }
-
-      // Write to Firestore
-      setDoc(doc(db, 'castles', state.currentCastle), currentSet);
+      currentSet.myHeros[heroKey] = (currentSet.myHeros[heroKey] || 0) + 1;
+      setDoc(doc(db, 'users', auth.currentUser.uid, 'castles', state.currentCastle), currentSet); // Adjusted Firestore path
     },
     removeHero(state, action) {
       const { heroKey } = action.payload;
@@ -48,8 +39,7 @@ const myHerosSlice = createSlice({
         }
       }
 
-      // Write to Firestore
-      setDoc(doc(db, 'castles', state.currentCastle), currentSet);
+      setDoc(doc(db, 'users', auth.currentUser.uid, 'castles', state.currentCastle), currentSet);
     },
     toggleFavorite(state, action) {
       const { heroKey } = action.payload;
@@ -65,32 +55,30 @@ const myHerosSlice = createSlice({
         currentSet.favorites[heroKey] = true;
       }
 
-      // Write to Firestore
-      setDoc(doc(db, 'castles', state.currentCastle), currentSet);
+      setDoc(doc(db, 'users', auth.currentUser.uid, 'castles', state.currentCastle), currentSet);
     },
     setInitialData(state, action) {
-      state.castles = action.payload.castles; // Set castles data
-      state.currentCastle = action.payload.firstCastle; // Set the first castle as currentCastle
+      state.castles = action.payload.castles; 
+      state.currentCastle = action.payload.firstCastle; 
     },
     setLoaded(state, action) {
-      state.isLoaded = action.payload; // Set loading state
+      state.isLoaded = action.payload; 
     },
     setError(state, action) {
-      state.error = action.payload; // Set the error message
+      state.error = action.payload; 
     }
   },
 });
 
-// Async function to fetch initial data from Firestore
+// Thunk to fetch initial data
 export const fetchInitialData = () => async (dispatch) => {
   const user = auth.currentUser; // Get the authenticated user
   if (!user) {
     console.error("No user is logged in.");
-    return;
+    return; // Exit early if no user is logged in
   }
 
   const userUID = user.uid; // Fetch the UID of the logged-in user
-
   dispatch(myHerosSlice.actions.setLoaded(false)); // Set loading to false before fetching
 
   try {
@@ -113,8 +101,6 @@ export const fetchInitialData = () => async (dispatch) => {
     dispatch(myHerosSlice.actions.setLoaded(true)); // Set loading to true after fetching
   }
 };
-
-
 
 export const { addHero, removeHero, toggleFavorite, setCastle, setInitialData, setLoaded } = myHerosSlice.actions;
 export default myHerosSlice.reducer;

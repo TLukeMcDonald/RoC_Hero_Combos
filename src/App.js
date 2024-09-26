@@ -7,14 +7,34 @@ import { fetchInitialData } from './redux/myHerosSlice';
 import CastleHeader from './components/CastleHeader';
 import combosData from './data/combosData'; 
 import './assets/css/App.css';
-import { auth, googleProvider } from './firebaseConfig'; // Import Firebase auth and provider
+import { auth, googleProvider } from './firebaseConfig'; 
 import { signInWithPopup, signOut } from 'firebase/auth';
 
 const App = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState(null);
 
-  // Fetch initial hero data when the component mounts
+  // Handle Google sign-in
+  const handleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      setUser(result.user);
+    } catch (error) {
+      console.error("Error during sign-in:", error);
+    }
+  };
+
+  // Handle sign-out
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      setUser(null);
+    } catch (error) {
+      console.error("Error during sign-out:", error);
+    }
+  };
+
+  // Fetch initial hero data only when user is logged in
   useEffect(() => {
     if (user) {
       dispatch(fetchInitialData());
@@ -36,26 +56,6 @@ const App = () => {
 
   const completedCombos = useMemo(() => filterCompletedCombos(combosData, myHeros, favorites), [myHeros, favorites]);
   const partialCombos = useMemo(() => filterPartialCombos(combosData, myHeros), [myHeros]);
-
-  // Handle Google sign-in
-  const handleLogin = async () => {
-    try {
-      const result = await signInWithPopup(auth, googleProvider);
-      setUser(result.user);
-    } catch (error) {
-      console.error("Error during sign-in:", error);
-    }
-  };
-
-  // Handle sign-out
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      setUser(null);
-    } catch (error) {
-      console.error("Error during sign-out:", error);
-    }
-  };
 
   // If there's an error, display it
   if (error) {
