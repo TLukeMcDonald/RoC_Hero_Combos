@@ -8,12 +8,6 @@ const HerosList = () => {
   const currentCastle = useSelector((state) => state.myHeros.currentCastle);
   const myHeros = useSelector((state) => state.myHeros?.castles[currentCastle]?.myHeros) || {};
   const favorites = useSelector((state) => state.myHeros?.castles[currentCastle]?.favorites) || {};
-
-
-  const hasHeros = Object.keys(myHeros).length > 0; 
-
-
-
   const favoriteKeys = Object.keys(favorites);
   const ownedHeros = {};
 
