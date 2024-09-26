@@ -15,7 +15,15 @@ const myHerosSlice = createSlice({
   reducers: {
     setCastle(state, action) {
       state.currentCastle = action.payload;
+    },    
+    addCastle(state, action) {
+      const castleName = action.payload;
+      if (!state.castles[castleName]) {
+        state.castles[castleName] = { myHeros: {}, favorites: {} }; // Initialize new castle with placeholders
+      }
+      state.currentCastle = castleName; // Set current castle to the new one
     },
+    
     addHero(state, action) {
       const { heroKey } = action.payload;
       const currentSet = state.castles[state.currentCastle];
@@ -41,6 +49,7 @@ const myHerosSlice = createSlice({
 
       setDoc(doc(db, 'users', auth.currentUser.uid, 'castles', state.currentCastle), currentSet);
     },
+    
     toggleFavorite(state, action) {
       const { heroKey } = action.payload;
       const currentSet = state.castles[state.currentCastle];
@@ -75,10 +84,11 @@ export const fetchInitialData = () => async (dispatch) => {
   const user = auth.currentUser; // Get the authenticated user
   if (!user) {
     console.error("No user is logged in.");
-    return; // Exit early if no user is logged in
+    return;
   }
 
   const userUID = user.uid; // Fetch the UID of the logged-in user
+
   dispatch(myHerosSlice.actions.setLoaded(false)); // Set loading to false before fetching
 
   try {
@@ -94,6 +104,25 @@ export const fetchInitialData = () => async (dispatch) => {
       }
     });
 
+    // Check if the user has no castles
+    if (Object.keys(castlesData).length === 0) {
+      // Prompt for castle name
+      const castleName = prompt("You don't have any castles. Please enter the name of your castle:");
+      
+      if (castleName) {
+        // Create a new castle document with placeholders
+        const newCastleRef = doc(castlesRef, castleName);
+        await setDoc(newCastleRef, {
+          myHeros: {}, // Placeholder for heroes
+          favorites: {}, // Placeholder for favorites
+        });
+        
+        // Update state with the new castle
+        castlesData[castleName] = { myHeros: {}, favorites: {} };
+        firstCastle = castleName;
+      }
+    }
+
     dispatch(myHerosSlice.actions.setInitialData({ castles: castlesData, firstCastle }));
   } catch (error) {
     console.error("Error fetching castles:", error);
@@ -102,5 +131,6 @@ export const fetchInitialData = () => async (dispatch) => {
   }
 };
 
-export const { addHero, removeHero, toggleFavorite, setCastle, setInitialData, setLoaded } = myHerosSlice.actions;
+
+export const { addHero, removeHero, toggleFavorite, setCastle, addCastle , setInitialData, setLoaded } = myHerosSlice.actions;
 export default myHerosSlice.reducer;

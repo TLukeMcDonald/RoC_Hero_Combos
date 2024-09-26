@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCastle } from '../redux/myHerosSlice'; // Import the action
+import { addCastle } from '../redux/myHerosSlice'; // Import the addCastle action
 
 const CastleHeader = () => {
   const dispatch = useDispatch();
@@ -9,6 +10,14 @@ const CastleHeader = () => {
 
   const handleCastleChange = (castleName) => {
     dispatch(setCastle(castleName));
+  };
+
+  const handleAddCastle = async () => {
+    const castleName = prompt("Enter the name of your new castle:");
+    if (castleName) {
+      // Dispatch action to add the new castle
+      dispatch(addCastle(castleName));
+    }
   };
 
   return (
@@ -22,6 +31,9 @@ const CastleHeader = () => {
           {castleName}
         </button>
       ))}
+      <button className="add-castle-button" onClick={handleAddCastle}>
+        +
+      </button>
     </div>
   );
 };
