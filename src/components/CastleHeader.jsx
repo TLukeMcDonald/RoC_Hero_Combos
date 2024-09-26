@@ -6,7 +6,7 @@ import { auth } from '../firebaseConfig'; // Import the Firebase auth instance
 
 const CastleHeader = () => {
   const dispatch = useDispatch();
-  const castles = useSelector((state) => Object.keys(state.myHeros.castles)); // Get castle names from state
+  const sortedCastles = useSelector((state) => state.myHeros.sortedCastles); // Get castle names from state
   const currentCastle = useSelector((state) => state.myHeros.currentCastle); // Get current castle
 
   const handleCastleChange = (castleName) => {
@@ -36,7 +36,7 @@ const CastleHeader = () => {
 
   return (
     <div className="castle-header">
-      {castles.map((castleName) => (
+      {sortedCastles.map((castleName) => (
         <button
           key={castleName}
           className={`castle-button ${currentCastle === castleName ? 'active' : ''}`}

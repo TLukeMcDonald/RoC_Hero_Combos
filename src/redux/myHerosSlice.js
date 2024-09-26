@@ -4,6 +4,7 @@ import { collection, getDocs, setDoc, doc } from 'firebase/firestore';
 
 const initialState = {
   castles: {},
+  sortedCastles: [],
   currentCastle: '',
   isLoaded: false,
   error: null,
@@ -19,7 +20,7 @@ const myHerosSlice = createSlice({
     addCastle(state, action) {
       const castleName = action.payload;
       if (!state.castles[castleName]) {
-        state.castles[castleName] = { myHeros: {}, favorites: {} }; // Initialize new castle with placeholders
+        state.castles[castleName] = { myHeros: {}, favorites: {}, castleOrder: state.sortedCastles.length+1}; // Initialize new castle with placeholders
       }
       state.currentCastle = castleName; // Set current castle to the new one
     },
@@ -68,7 +69,8 @@ const myHerosSlice = createSlice({
     },
     setInitialData(state, action) {
       state.castles = action.payload.castles; 
-      state.currentCastle = action.payload.firstCastle; 
+      state.currentCastle = action.payload.firstCastle;
+      state.sortedCastles = action.payload.sortedCastles;
     },
     setLoaded(state, action) {
       state.isLoaded = action.payload; 
@@ -115,15 +117,21 @@ export const fetchInitialData = () => async (dispatch) => {
         await setDoc(newCastleRef, {
           myHeros: {}, // Placeholder for heroes
           favorites: {}, // Placeholder for favorites
+          castleOrder: 1
         });
         
         // Update state with the new castle
-        castlesData[castleName] = { myHeros: {}, favorites: {} };
+        castlesData[castleName] = { myHeros: {}, favorites: {}, castleOrder: 1 };
         firstCastle = castleName;
       }
     }
 
-    dispatch(myHerosSlice.actions.setInitialData({ castles: castlesData, firstCastle }));
+    // Sort castles based on castleOrder
+    const sortedCastles = Object.entries(castlesData)
+      .sort(([, a], [, b]) => a.castleOrder - b.castleOrder)
+      .map(([name]) => name); // Extract the sorted castle names
+
+    dispatch(myHerosSlice.actions.setInitialData({ castles: castlesData, firstCastle, sortedCastles }));
   } catch (error) {
     console.error("Error fetching castles:", error);
   } finally {
