@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCastle, addCastle } from '../redux/myHerosSlice'; // Import the actions
 import { saveCastleToDatabase } from '../firebaseService'; // Import the function to save to the database
 import { auth } from '../firebaseConfig'; // Import the Firebase auth instance
+import './../assets/css/CastleHeader.css'
 
 const CastleHeader = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const CastleHeader = () => {
 
         // Save the new castle to the database
         try {
-          await saveCastleToDatabase(userId, castleName); // Pass the userId and castleName
+          await saveCastleToDatabase(userId, castleName, sortedCastles.length+1); // Pass the userId and castleName
         } catch (error) {
           console.error("Error saving castle to the database:", error);
         }

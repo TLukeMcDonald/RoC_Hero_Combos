@@ -80,7 +80,9 @@ const App = () => {
     <div className="App">
       <button onClick={handleLogout}>Sign Out</button>
       <CastleHeader />
+
       <HerosList />
+      
       <div className="filtered-combos-container">
         <div className="filtered-combos-title">Completed or Favorite Combos</div>
         <FilteredCombos combos={completedCombos} />

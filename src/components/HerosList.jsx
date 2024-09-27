@@ -43,7 +43,7 @@ const HerosList = () => {
     }));
 
   return (
-    <div>
+    <div className='herosList'>
       <h1>{currentCastle} Heroes List</h1>
       <div className="hero-tiles-wrapper">
         {favoriteHeros.map(hero => (

@@ -23,6 +23,7 @@ const myHerosSlice = createSlice({
         state.castles[castleName] = { myHeros: {}, favorites: {}, castleOrder: state.sortedCastles.length+1}; // Initialize new castle with placeholders
       }
       state.currentCastle = castleName; // Set current castle to the new one
+      state.sortedCastles = [...state.sortedCastles, castleName];
     },
     
     addHero(state, action) {
