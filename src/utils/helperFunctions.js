@@ -16,7 +16,6 @@ export const filterPartialCombos = (combosData, myHeros, troopFilters) => {
   )(combosData);
 };
 
-
 // Other helpers
 export const getTextColorClass = (copiesHave, copiesNeeded) => {
   if (copiesNeeded === 0) return 'zero'; // Handle division by zero
@@ -43,7 +42,7 @@ const filterFavOrOwned = (combosData, myHeros, favorites) => {
       const isFavorite = favorites[heroKey];
       
       // Consider the hero completed if they are either in favorites or have enough copies
-      return isFavorite || (hero && hero >= herosData[heroKey].copiesNeed);
+      return isFavorite || (hero && hero.copiesHave >= herosData[heroKey].copiesNeed);
     })
   );
 };
@@ -51,10 +50,10 @@ const filterFavOrOwned = (combosData, myHeros, favorites) => {
 const applyTroopFilters = (combos, troopFilters) => {
   return combos.filter(combo => {
     const troopType = combo.troop; // Assuming troop holds the type directly
-    const matchesFilter = troopType ? troopFilters[troopType] : false;
+    const matchesFilter = troopType ? troopFilters.troopTypes[troopType] : false;
 
     // Check if any troop filters are active
-    const anyFilterActive = Object.values(troopFilters).some(v => v);
+    const anyFilterActive = Object.values(troopFilters.troopTypes).some(v => v);
     
     // If no filters are active, include all combos; if any filters are active, only include those that match
     return !anyFilterActive || matchesFilter;

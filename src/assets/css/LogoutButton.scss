@@ -1,0 +1,46 @@
+/* src/assets/css/LogoutButton.scss */
+.logout-button-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  
+    .logout-icon {
+      font-size: 24px; /* Adjust the icon size as needed */
+      color: #007bff; /* Change color to fit your theme */
+    }
+  
+    .tooltip {
+      visibility: hidden;
+      width: 60px; /* Adjust based on your text */
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%; /* Position above the icon */
+      left: 50%;
+      margin-left: -30px; /* Center the tooltip */
+      opacity: 0;
+      transition: opacity 0.3s;
+  
+      /* Arrow pointing to the tooltip */
+      &::after {
+        content: '';
+        position: absolute;
+        top: 100%; /* At the bottom of the tooltip */
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #333 transparent transparent transparent;
+      }
+    }
+  
+    &:hover .tooltip {
+      visibility: visible;
+      opacity: 1; /* Show tooltip on hover */
+    }
+  }
+  
