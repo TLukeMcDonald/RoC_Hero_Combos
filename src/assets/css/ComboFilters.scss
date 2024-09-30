@@ -5,22 +5,36 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   margin-bottom: 20px;
+  min-width: 170px;
+
+  display: flex;              // Use flexbox layout
+  flex-wrap: wrap;           // Allow items to wrap
+  gap: 10px;                 // Add space between the filters
+
+  h3 {
+    flex-basis: 100%;        // Ensure the header takes the full width
+    margin-bottom: 10px;     // Space below the header
+  }
 
   .react-select {
-    margin-bottom: 10px;
+    flex: 1;                 // Make each filter take equal space
+    min-width: 160px;        // Set a minimum width for each dropdown
+    max-width: 250px;        // Set a maximum width for each dropdown
+    margin-bottom: 0;        // Remove bottom margin for better alignment
   }
 
   button {
-    margin-top: 10px; 
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
+    margin-left: auto;       // Align the reset button to the right
+    margin-top: 0;           // Remove top margin for alignment
+    background-color: #007bff; // Button color
+    color: white;            // Text color for the button
+    border: none;            // Remove default border
+    padding: 5px 10px;      // Padding for the button
+    cursor: pointer;         // Pointer cursor on hover
+    border-radius: 5px;     // Rounded corners
 
     &:hover {
-      background-color: #0056b3;
+      background-color: #0056b3; // Darker shade on hover
     }
   }
 }

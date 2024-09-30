@@ -5,7 +5,7 @@ const comboFiltersSlice = createSlice({
   name: 'comboFilters',
   initialState: {
     troopTypes: {
-      Archers: false,
+      Archer: false,
       Cavs: false,
       Footmen: false,
       Mixed: false,
