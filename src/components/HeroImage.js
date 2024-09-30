@@ -1,5 +1,5 @@
 import React from 'react';
-import './../assets/css/HeroImage.css'; // Assuming the CSS is located here
+import './../assets/css/HeroImage.scss'; // Assuming the CSS is located here
 import herosData from '../data/herosData.js'; // Import herosData to access the pictureLink
 
 const HeroImage = ({ heroKey }) => {

@@ -2,7 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import HeroTile from './HeroTile';
 import herosData from '../data/herosData.js';
-import './../assets/css/HeroTile.css';
+import './../assets/css/HeroTile.scss';
+import '../assets/css/HerosList.scss'
 
 const HerosList = () => {
   const currentCastle = useSelector((state) => state.myHeros.currentCastle);
@@ -43,7 +44,7 @@ const HerosList = () => {
     }));
 
   return (
-    <div className='herosList'>
+    <div className='heros-list'>
       <h1>{currentCastle} Heroes List</h1>
       <div className="hero-tiles-wrapper">
         {favoriteHeros.map(hero => (

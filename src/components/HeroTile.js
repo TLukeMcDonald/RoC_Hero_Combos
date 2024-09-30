@@ -7,7 +7,7 @@ import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
 import herosData from '../data/herosData.js';
 import { getTextColorClass } from '../utils/helperFunctions';
-import './../assets/css/HeroTile.css';
+import './../assets/css/HeroTile.scss';
 
 const HeroTile = ({ heroKey, showButtons = false }) => {
   const dispatch = useDispatch();

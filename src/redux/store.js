@@ -1,12 +1,13 @@
+// src/redux/store.js
 import { configureStore } from '@reduxjs/toolkit';
 import myHerosReducer from './myHerosSlice';
+import comboFiltersReducer from './comboFiltersSlice';
 
 const store = configureStore({
   reducer: {
     myHeros: myHerosReducer,
+    comboFilters: comboFiltersReducer,
   },
-  middleware: (getDefaultMiddleware) => 
-    getDefaultMiddleware({ serializableCheck: false }), // If you're storing non-serializable values
 });
 
 export default store;

@@ -1,3 +1,5 @@
+//src/data/typeConstants.js
+
 export const TROOPTYPE = {
     C: 'Cavs',
     F: 'Footmen',

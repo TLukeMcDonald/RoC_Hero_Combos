@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCastle, addCastle } from '../redux/myHerosSlice'; // Import the actions
 import { saveCastleToDatabase } from '../firebaseService'; // Import the function to save to the database
 import { auth } from '../firebaseConfig'; // Import the Firebase auth instance
-import './../assets/css/CastleHeader.css'
+import './../assets/css/CastleHeader.scss'
 
 const CastleHeader = () => {
   const dispatch = useDispatch();

@@ -1,48 +1,55 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import HerosList from './components/HerosList';
-import FilteredCombos from './components/FilteredCombos';
+import CombosDisplay from './components/CombosDisplay';
+import ComboFilters from './components/ComboFilters'; 
 import { filterCompletedCombos, filterPartialCombos } from './utils/helperFunctions';
 import { fetchInitialData } from './redux/myHerosSlice';
 import CastleHeader from './components/CastleHeader';
-import combosData from './data/combosData'; 
-import './assets/css/App.css';
-import { auth, googleProvider } from './firebaseConfig'; 
+import combosData from './data/combosData';
+import './assets/css/App.scss';
+import { auth, googleProvider } from './firebaseConfig';
 import { signInWithPopup, signOut } from 'firebase/auth';
 
 const App = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState(null);
+  const [authError, setAuthError] = useState(null);
 
-  // Handle Google sign-in
   const handleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       setUser(result.user);
     } catch (error) {
-      console.error("Error during sign-in:", error);
+      console.error('Error during sign-in:', error);
+      setAuthError('Login failed. Please try again.');
     }
   };
 
-  // Handle sign-out
   const handleLogout = async () => {
     try {
       await signOut(auth);
       setUser(null);
     } catch (error) {
-      console.error("Error during sign-out:", error);
+      console.error('Error during sign-out:', error);
     }
   };
 
-  // Fetch initial hero data only when user is logged in
   useEffect(() => {
-    if (user) {
-      dispatch(fetchInitialData());
-    }
-  }, [dispatch, user]);
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+        dispatch(fetchInitialData());
+      } else {
+        setUser(null);
+      }
+    });
+    return () => unsubscribe();
+  }, [dispatch]);
 
   const isLoaded = useSelector((state) => state.myHeros.isLoaded);
   const error = useSelector((state) => state.myHeros.error);
+  const troopFilters = useSelector((state) => state.comboFilters);
 
   const myHeros = useSelector((state) => {
     const currentCastle = state.myHeros.currentCastle;
@@ -53,21 +60,22 @@ const App = () => {
     const currentCastle = state.myHeros.currentCastle;
     return state.myHeros.castles[currentCastle]?.favorites || {};
   });
+  
 
-  const completedCombos = useMemo(() => filterCompletedCombos(combosData, myHeros, favorites), [myHeros, favorites]);
-  const partialCombos = useMemo(() => filterPartialCombos(combosData, myHeros), [myHeros]);
+  const completedCombos = useMemo(() => filterCompletedCombos(combosData, myHeros, favorites, troopFilters), [myHeros, favorites, troopFilters]);
+  const partialCombos = useMemo(() => filterPartialCombos(combosData, myHeros, troopFilters), [myHeros, troopFilters]);
 
   // If there's an error, display it
   if (error) {
     return <div>Error: {error}</div>;
   }
 
-  // If loading or user isn't authenticated, show login or loading state
   if (!user) {
     return (
       <div className="login-screen">
         <h1>Please Sign In</h1>
-        <button onClick={handleLogin}>Sign in with Google</button>
+        {authError && <p className="error-message">{authError}</p>}
+        <button onClick={handleLogin} className="login-button">Sign in with Google</button>
       </div>
     );
   }
@@ -78,17 +86,11 @@ const App = () => {
 
   return (
     <div className="App">
-      <button onClick={handleLogout}>Sign Out</button>
+      <button onClick={handleLogout} className="logout-button">Sign Out</button>
       <CastleHeader />
-
       <HerosList />
-      
-      <div className="filtered-combos-container">
-        <div className="filtered-combos-title">Completed or Favorite Combos</div>
-        <FilteredCombos combos={completedCombos} />
-        <div className="filtered-combos-title">Partial Combos</div>
-        <FilteredCombos combos={partialCombos} />
-      </div>
+      <ComboFilters /> 
+      <CombosDisplay completedCombos={completedCombos} partialCombos={partialCombos} />
     </div>
   );
 };
