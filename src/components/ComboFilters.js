@@ -21,6 +21,11 @@ const heroOptions = [
   { value: 'Hero4', label: 'Hero4' },
 ];
 
+const paidOptions = [
+  { value: 'paid', label: 'Paid Heros' },
+  { value: 'notPaid', label: 'Free Heros' },
+]
+
 const ComboFilters = () => {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.comboFilters);
@@ -83,6 +88,17 @@ const ComboFilters = () => {
         className="react-select"
         classNamePrefix="select"
         placeholder="Select Heroes..."
+      />
+      
+      {/* Paid Heros Dropdown */}
+      <Select
+        isMulti
+        options={paidOptions}
+        value={paidOptions.filter(option => filters.paid[option.value])}
+        onChange={(selected) => handleChange(selected, 'paid')}
+        className="react-select"
+        classNamePrefix="select"
+        placeholder="Paid or F2P"
       />
 
       <button onClick={handleReset}>Reset Filters</button>

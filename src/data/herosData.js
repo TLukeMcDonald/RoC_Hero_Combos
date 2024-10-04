@@ -54,7 +54,7 @@ const herosData = {
     [HEROES.I_GUARDIAN]: {"name": "I Guardian", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "IGUARDIAN.jpg" },
     [HEROES.IMMORTAL]: {"name": "Immortal", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "IMMORTAL.jpg" },
     [HEROES.INQUISITOR]: {"name": "Inquisitor", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "INQUISITOR.jpg" },
-    [HEROES.ISABELLA]: {"name": "Isabella", "type": TROOPTYPE.C, "copiesNeed":34, "paid": "Y", pictureLink: "ISABELLA.jpg" },
+    [HEROES.ISABELLA]: {"name": "Isabella", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "ISABELLA.jpg" },
     [HEROES.JADEEAGLE]: {"name": "Jade Eagle", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "JADEEAGLE.jpg" },
     [HEROES.JADERAKSHASA]: {"name": "Jade Rakshasa", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "JADERAKSHASA.jpg" },
     [HEROES.JANE]: {"name": "Jane", "type": TROOPTYPE.C, "copiesNeed":4, "paid": "N", pictureLink: "JANE.jpg" },

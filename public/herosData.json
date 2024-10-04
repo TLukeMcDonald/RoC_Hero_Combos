@@ -5,7 +5,7 @@
     "ALFAITH": {"name": "AlFaith", "type": "A", "copiesNeed": 4, "paid": "N", "pictureLink": "ALFAITH.jpg" },
     "ALFRED": {"name": "Alfred", "type": "C", "copiesNeed":34, "paid": "Y", "pictureLink": "ALFRED.jpg" },
     "ARMY": {"name": "Army Breaker", "type": "C", "copiesNeed":4, "paid": "N", "pictureLink": "ARMY.jpg" },
-    "ARSLAN": {"name": "Arslan", "type": "C", "copiesNeed":4, "paid": "N", "pictureLink": "ARSLAN.jpg" },
+    "ARSLAN": {"name": "Arslan", "type": "F", "copiesNeed":4, "paid": "N", "pictureLink": "ARSLAN.jpg" },
     "ARTHUR": {"name": "Arthur", "type": "C", "copiesNeed":34, "paid": "Y", "pictureLink": "ARTHUR.jpg" },
     "ASHEN": {"name": "Ashen", "type": "C", "copiesNeed":4, "paid": "N", "pictureLink": "ASHEN.jpg" },
     "ASHOKA": {"name": "Ashoka", "type": "C", "copiesNeed":4, "paid": "N", "pictureLink": "ASHOKA.jpg" },

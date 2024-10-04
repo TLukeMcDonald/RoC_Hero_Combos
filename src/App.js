@@ -50,7 +50,8 @@ const App = () => {
 
   const isLoaded = useSelector((state) => state.myHeros.isLoaded);
   const error = useSelector((state) => state.myHeros.error);
-  const troopFilters = useSelector((state) => state.comboFilters);
+  const filters = useSelector((state) => state.comboFilters);
+
 
   const myHeros = useSelector((state) => {
     const currentCastle = state.myHeros.currentCastle;
@@ -61,10 +62,10 @@ const App = () => {
     const currentCastle = state.myHeros.currentCastle;
     return state.myHeros.castles[currentCastle]?.favorites || {};
   });
-  
 
-  const completedCombos = useMemo(() => filterCompletedCombos(combosData, myHeros, favorites, troopFilters), [myHeros, favorites, troopFilters]);
-  const partialCombos = useMemo(() => filterPartialCombos(combosData, myHeros, troopFilters), [myHeros, troopFilters]);
+
+  const completedCombos = useMemo(() => filterCompletedCombos(combosData, myHeros, favorites, filters), [myHeros, favorites, filters]);
+  const partialCombos = useMemo(() => filterPartialCombos(combosData, myHeros,favorites, filters), [myHeros,favorites, filters]);
 
   // If there's an error, display it
   if (error) {

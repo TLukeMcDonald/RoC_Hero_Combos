@@ -2,7 +2,7 @@ import { HEROES } from './heroConstants';
 import { TROOPTYPE } from './typeConstants';
 
 const combosData = [
-  { heros: [HEROES.ROLAND, HEROES.LOUIS, HEROES.AVALANCHE], rank: '', freeRank: 1, troop: TROOPTYPE.C, hasPaid: 'N' },
+  { heros: [HEROES.ROLAND, HEROES.LOUIS, HEROES.AVALANCHE], rank: 1, freeRank: 1, troop: TROOPTYPE.C, hasPaid: 'Y' },
   { heros: [HEROES.SAKURA, HEROES.WARDEN, HEROES.HENRYII], freeRank: 1, troop: TROOPTYPE.A, hasPaid: 'N' },
   { heros: [HEROES.HARALDIII, HEROES.GUSTAV, HEROES.HEALER], freeRank: 1, troop: TROOPTYPE.F, hasPaid: 'N' },
   { heros: [HEROES.HARALDIII, HEROES.WARHAMMER, HEROES.HEALER], freeRank: 1, troop: TROOPTYPE.M, hasPaid: 'N' },

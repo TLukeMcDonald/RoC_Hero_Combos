@@ -2,17 +2,21 @@ import herosData from '../data/herosData';
 import { pipe } from 'ramda';
 
 // Filtering functions
-export const filterCompletedCombos = (combosData, myHeros, favorites, troopFilters) => {
+export const filterCompletedCombos = (combosData, myHeros, favorites, filters) => {
+  const {troopTypes, paid} = filters;
   return pipe(
     (combos) => filterFavOrOwned(combos, myHeros, favorites),
-    (combos) => applyTroopFilters(combos, troopFilters)
+    (combos) => applyTroopFilters(combos, troopTypes),
+    (combos) => filterByPaidStatus(combos, paid)
   )(combosData);
 };
 
-export const filterPartialCombos = (combosData, myHeros, troopFilters) => {
+export const filterPartialCombos = (combosData, myHeros, favorites, filters) => {
+  const {troopTypes, paid} = filters;
   return pipe(
-    (combos) => filterPartials(combos, myHeros),
-    (combos) => applyTroopFilters(combos, troopFilters)
+    (combos) => filterPartials(combos, myHeros, favorites),
+    (combos) => applyTroopFilters(combos, troopTypes),
+    (combos) => filterByPaidStatus(combos, paid)
   )(combosData);
 };
 
@@ -29,9 +33,11 @@ export const getTextColorClass = (copiesHave, copiesNeeded) => {
     'full';
 };
 
-const filterPartials = (combosData, myHeros) => {
-  return combosData.filter(combo =>
-    combo.heros.some(heroKey => myHeros[heroKey])
+const filterPartials = (combosData, myHeros, favorites) => {
+  return combosData.filter(combo => 
+    combo.heros.some(heroKey =>
+      favorites[heroKey] || myHeros[heroKey])
+
   );
 };
 
@@ -47,15 +53,26 @@ const filterFavOrOwned = (combosData, myHeros, favorites) => {
   );
 };
 
-const applyTroopFilters = (combos, troopFilters) => {
+const applyTroopFilters = (combos, troopTypes) => {
   return combos.filter(combo => {
-    const troopType = combo.troop; // Assuming troop holds the type directly
-    const matchesFilter = troopType ? troopFilters.troopTypes[troopType] : false;
+    const troop = combo.troop; // Assuming troop holds the type directly
+    const matchesFilter = troop ? troopTypes[troop] : false;
 
     // Check if any troop filters are active
-    const anyFilterActive = Object.values(troopFilters.troopTypes).some(v => v);
+    const anyFilterActive = Object.values(troopTypes).some(v => v);
     
     // If no filters are active, include all combos; if any filters are active, only include those that match
     return !anyFilterActive || matchesFilter;
   });
+};
+
+const filterByPaidStatus = (combosData, paidFilter) => {
+  return combosData.filter(combo => {
+
+    const anyFilterActive = Object.values(paidFilter).some(v => v);
+
+    const matchesFilter = combo.hasPaid === 'Y' ? paidFilter['paid'] : paidFilter['notPaid'];
+
+    return !anyFilterActive || matchesFilter;
+  })
 };

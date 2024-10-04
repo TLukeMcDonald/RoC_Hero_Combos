@@ -23,6 +23,10 @@ const comboFiltersSlice = createSlice({
       Hero3: false,
       Hero4: false,
     },
+    paid: {
+      paid: false,
+      notPaid: false
+    }
   },
   reducers: {
     toggleFilter: (state, action) => {
