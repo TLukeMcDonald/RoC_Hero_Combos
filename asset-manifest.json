@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/RoC_Hero_Combos/static/css/main.d35e49d7.css",
-    "main.js": "/RoC_Hero_Combos/static/js/main.a9e0c5d5.js",
+    "main.css": "/RoC_Hero_Combos/static/css/main.c9b8e341.css",
+    "main.js": "/RoC_Hero_Combos/static/js/main.89b43553.js",
     "static/media/BELISARIUS.jpg": "/RoC_Hero_Combos/static/media/BELISARIUS.ecd442ab23aed84db03f.jpg",
     "static/media/DEFENDER.jpg": "/RoC_Hero_Combos/static/media/DEFENDER.705f2d427b583dacaf28.jpg",
     "static/media/CHARLES.jpg": "/RoC_Hero_Combos/static/media/CHARLES.b54129c647ee3a11c6cf.jpg",
@@ -105,11 +105,11 @@
     "static/media/HEAVENS.jpg": "/RoC_Hero_Combos/static/media/HEAVENS.4b61b4cbc5b2b35d9106.jpg",
     "static/media/LANCELOT.jpg": "/RoC_Hero_Combos/static/media/LANCELOT.6b26b71de2e3b781d47f.jpg",
     "index.html": "/RoC_Hero_Combos/index.html",
-    "main.d35e49d7.css.map": "/RoC_Hero_Combos/static/css/main.d35e49d7.css.map",
-    "main.a9e0c5d5.js.map": "/RoC_Hero_Combos/static/js/main.a9e0c5d5.js.map"
+    "main.c9b8e341.css.map": "/RoC_Hero_Combos/static/css/main.c9b8e341.css.map",
+    "main.89b43553.js.map": "/RoC_Hero_Combos/static/js/main.89b43553.js.map"
   },
   "entrypoints": [
-    "static/css/main.d35e49d7.css",
-    "static/js/main.a9e0c5d5.js"
+    "static/css/main.c9b8e341.css",
+    "static/js/main.89b43553.js"
   ]
 }
