@@ -10,7 +10,7 @@ import combosData from './data/combosData';
 import './assets/css/App.scss';
 import { auth, googleProvider } from './firebaseConfig';
 import { signInWithPopup, signOut } from 'firebase/auth';
-import LogoutButton from './components/LogoutButton';
+
 
 const App = () => {
   const dispatch = useDispatch();
@@ -88,8 +88,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <LogoutButton handleLogout={handleLogout} />
-      <CastleHeader />
+      <CastleHeader handleLogout={handleLogout}/>
       <ComboFilters /> 
       <HerosList />
       <CombosDisplay completedCombos={completedCombos} partialCombos={partialCombos} />

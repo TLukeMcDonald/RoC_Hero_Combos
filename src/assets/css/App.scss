@@ -12,7 +12,7 @@ body {
 .App {
   text-align: center;
   font-family: 'Source Sans Pro', sans-serif;
-  padding: 10px;
+  padding: 0px 10px 10px 10px;
 }
 
 /* Login Screen */
@@ -43,22 +43,4 @@ body {
   color: red;
   font-size: 14px;
   margin-top: 10px;
-}
-
-/* CastleHeader styles */
-.castle-header {
-  margin-bottom: 20px;
-}
-
-/* Filtered Combos */
-.filtered-combos-container {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-}
-
-.filtered-combos-title {
-  font-size: 18px;
-  margin-bottom: 10px;
-  font-weight: bold;
 }

@@ -1,40 +1,28 @@
-/* CastleHeader container styling */
-/* .castle-header {
+.castle-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
+  justify-content: space-between; /* Align items with space between */
+  // padding: 0px 10px 10px 10px;
+  position: sticky; /* Keeps the header sticky */
+  top: 0; /* Sticks it to the top */
+  background-color: #e7e7e7; /* Match your body background or other color */
+  z-index: 1000; /* Ensures it's above other content */
+}
+
+.castle-buttons {
+  display: flex;
+  align-items: center;
+  flex: 1; /* Allow this section to grow and take up available space */
+  // gap: 10px; /* Space between castle buttons */
 }
 
 .castle-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    outline: none;
-    cursor: pointer;
-    background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
-    border-radius: 30px;
-    border: 1px solid #8F9092;
-    transition: all 0.2s ease;
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: #606060;
-    text-shadow: 0 1px #fff;
-    padding: 5px 10px;
-  }
-  
-.castle-button:hover {
-    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
-  }
-  
-.castle-button:active {
-    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
-  }
-  
-.castle-button:focus {
-    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
-  }
-  
-   */
+  flex-grow: 1; /* Allow buttons to grow and fill available space */
+  margin-top: unset;
+  height: 35px;
+  border-radius: 0px;
+}
+
+.add-castle-button {
+  margin: 10px;
+}
