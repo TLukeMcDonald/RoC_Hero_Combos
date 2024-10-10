@@ -9,7 +9,7 @@ import CastleHeader from './components/CastleHeader';
 import combosData from './data/combosData';
 import './assets/css/App.scss';
 import { auth, googleProvider } from './firebaseConfig';
-import { signInWithPopup, signOut } from 'firebase/auth';
+import { signInWithPopup } from 'firebase/auth';
 
 
 const App = () => {
@@ -24,15 +24,6 @@ const App = () => {
     } catch (error) {
       console.error('Error during sign-in:', error);
       setAuthError('Login failed. Please try again.');
-    }
-  };
-
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      setUser(null);
-    } catch (error) {
-      console.error('Error during sign-out:', error);
     }
   };
 
@@ -88,7 +79,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <CastleHeader handleLogout={handleLogout}/>
+      <CastleHeader />
       <ComboFilters /> 
       <HerosList />
       <CombosDisplay completedCombos={completedCombos} partialCombos={partialCombos} />

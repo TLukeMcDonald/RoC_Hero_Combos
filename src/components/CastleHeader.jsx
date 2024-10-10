@@ -6,7 +6,7 @@ import { auth } from '../firebaseConfig'; // Import the Firebase auth instance
 import LogoutButton from './LogoutButton';
 import './../assets/css/CastleHeader.scss';
 
-const CastleHeader = ({ handleLogOut }) => {
+const CastleHeader = () => {
   const dispatch = useDispatch();
   const sortedCastles = useSelector((state) => state.myHeros.sortedCastles); // Get castle names from state
   const currentCastle = useSelector((state) => state.myHeros.currentCastle); // Get current castle
@@ -52,7 +52,7 @@ const CastleHeader = ({ handleLogOut }) => {
           +
         </button>
       </div>
-      <LogoutButton handleLogout={handleLogOut} />
+      <LogoutButton />
     </div>
   );
 };
