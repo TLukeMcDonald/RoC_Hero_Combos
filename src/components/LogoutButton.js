@@ -11,7 +11,7 @@ const LogoutButton = () => {
 
 
   const handleLogout = async () => {
-    alert("test")
+
     try {
       await signOut(auth);
       setUser(null);

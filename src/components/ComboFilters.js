@@ -24,7 +24,14 @@ const heroOptions = [
 const paidOptions = [
   { value: 'paid', label: 'Paid Heros' },
   { value: 'notPaid', label: 'Free Heros' },
-]
+];
+
+const customStyles = {
+  menu: (provided) => ({
+    ...provided,
+    zIndex: 100, 
+  }),
+};
 
 const ComboFilters = () => {
   const dispatch = useDispatch();
@@ -66,6 +73,7 @@ const ComboFilters = () => {
         className="react-select"
         classNamePrefix="select"
         placeholder="Select Troop Types..."
+        styles={customStyles}
       />
 
       {/* Seasons Dropdown */}
@@ -77,6 +85,7 @@ const ComboFilters = () => {
         className="react-select"
         classNamePrefix="select"
         placeholder="Select Seasons..."
+        styles={customStyles}
       />
 
       {/* Heroes Dropdown */}
@@ -88,6 +97,7 @@ const ComboFilters = () => {
         className="react-select"
         classNamePrefix="select"
         placeholder="Select Heroes..."
+        styles={customStyles}
       />
       
       {/* Paid Heros Dropdown */}
@@ -99,6 +109,7 @@ const ComboFilters = () => {
         className="react-select"
         classNamePrefix="select"
         placeholder="Paid or F2P"
+        styles={customStyles}
       />
 
       <button onClick={handleReset}>Reset Filters</button>
